@@ -201,6 +201,228 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;font-size:15px;color:var(--
 .toast{position:fixed;bottom:calc(84px + var(--safe-bottom));left:50%;transform:translateX(-50%) translateY(10px);background:rgba(28,28,30,.92);color:#fff;padding:12px 20px;border-radius:14px;font-size:14px;font-weight:600;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;z-index:2000;white-space:nowrap;max-width:calc(100vw - 40px);text-align:center}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .empty-msg{text-align:center;padding:24px;color:var(--sub);font-size:14px;line-height:1.7}
+/* ── バーコード・食品検索UI ─────────────────── */
+.food-search-card {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+.food-search-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--tx);
+}
+.scan-btn-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.scan-btn {
+  flex: 1;
+  padding: 12px 8px;
+  border-radius: 12px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.15s;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.scan-btn:active { opacity: 0.7; }
+.scan-btn-cam  { background: #0A84FF; color: #fff; }
+.scan-btn-type { background: var(--bg); color: var(--tx); }
+.scan-btn .scan-icon { font-size: 22px; }
+
+#barcode-video-wrap {
+  display: none;
+  margin-bottom: 12px;
+}
+#barcode-video-wrap video {
+  width: 100%;
+  border-radius: 12px;
+  background: #000;
+  max-height: 220px;
+  object-fit: cover;
+}
+.scan-hint {
+  font-size: 11px;
+  color: var(--sub);
+  text-align: center;
+  margin-top: 4px;
+}
+.scan-cancel-btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 10px;
+  border: none;
+  background: var(--bg);
+  color: var(--sub);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.food-name-search-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.food-name-search-row input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1.5px solid var(--bdr);
+  background: var(--bg);
+  color: var(--tx);
+  font-size: 14px;
+  font-family: 'Noto Sans JP', sans-serif;
+  outline: none;
+}
+.food-name-search-row input:focus { border-color: var(--bl); }
+.food-name-search-row button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #30D158;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.web-search-links {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+}
+.web-search-links.show { display: flex; }
+.web-search-label {
+  font-size: 11px;
+  color: var(--sub);
+  margin-bottom: 2px;
+}
+.ext-link-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.ext-link-btn {
+  flex: 1;
+  min-width: 90px;
+  padding: 9px 6px;
+  border-radius: 10px;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.15s;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.ext-link-btn:active { opacity: 0.7; }
+.ext-btn-mognavi  { background: #FF9F0A22; color: #FF9F0A; }
+.ext-btn-slism    { background: #30D15822; color: #30D158; }
+.ext-btn-google   { background: #0A84FF22; color: #0A84FF; }
+
+.scan-result-box {
+  display: none;
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-top: 10px;
+  font-size: 13px;
+}
+.scan-result-box.show { display: block; }
+.scan-result-name {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.scan-result-kcal {
+  color: #FF9F0A;
+  font-weight: 600;
+}
+.scan-result-use-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 11px;
+  border-radius: 10px;
+  border: none;
+  background: #0A84FF;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+/* Open Food Facts API 検索結果 */
+#api-search-loading {
+  display: none;
+  text-align: center;
+  padding: 10px;
+  font-size: 13px;
+  color: var(--sub);
+}
+#api-search-results {
+  display: none;
+  margin-top: 10px;
+  margin-bottom: 8px;
+}
+#api-search-results.show { display: block; }
+.api-results-label {
+  font-size: 11px;
+  color: var(--sub);
+  margin-bottom: 6px;
+}
+.api-result-card {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: border-color 0.15s, opacity 0.15s;
+}
+.api-result-card:active { opacity: 0.6; border-color: var(--bl); }
+.api-result-name {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 3px;
+  line-height: 1.4;
+}
+.api-result-brand {
+  font-size: 11px;
+  color: var(--sub);
+  margin-bottom: 4px;
+}
+.api-result-nutri {
+  font-size: 11px;
+  color: var(--sub);
+}
+.api-result-kcal {
+  color: #FF9F0A;
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+}
+.api-no-result {
+  font-size: 12px;
+  color: var(--sub);
+  padding: 10px;
+  text-align: center;
+  line-height: 1.6;
+}
 </style>
 </head>
 <body>
@@ -266,7 +488,75 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;font-size:15px;color:var(--
           <div class="preset-row" id="presetRow"></div>
           <div id="noPreset" style="font-size:13px;color:var(--sub);display:none">保存した食品がここに表示されます</div>
         </div>
-        <div class="input-card">
+        <!-- ══ バーコード・食品検索カード ══ -->
+        <div class="food-search-card">
+          <h3>📷 バーコード / 食品検索</h3>
+
+          <!-- カメラスキャン ボタン行 -->
+          <div class="scan-btn-row">
+            <button class="scan-btn scan-btn-cam" onclick="startBarcodeScanner()">
+              <span class="scan-icon">📷</span>カメラで読み取り
+            </button>
+            <button class="scan-btn scan-btn-type" onclick="openManualBarcode()">
+              <span class="scan-icon">🔢</span>番号を入力
+            </button>
+          </div>
+
+          <!-- カメラビュー -->
+          <div id="barcode-video-wrap">
+            <video id="barcode-video" autoplay playsinline muted></video>
+            <p class="scan-hint">バーコードをカメラに向けてください</p>
+            <button class="scan-cancel-btn" onclick="stopBarcodeScanner()">✕ キャンセル</button>
+          </div>
+
+          <!-- スキャン結果 -->
+          <div class="scan-result-box" id="scan-result-box">
+            <div class="scan-result-name" id="scan-result-name">—</div>
+            <div class="scan-result-kcal" id="scan-result-kcal"></div>
+            <div id="scan-result-detail" style="font-size:12px;color:var(--sub);margin-top:2px"></div>
+            <button class="scan-result-use-btn" onclick="applyScanResult()">この食品を入力フォームに反映</button>
+          </div>
+
+          <hr style="border:none;border-top:1px solid var(--bdr);margin:12px 0">
+
+          <!-- 食品名テキスト検索 -->
+          <div class="food-name-search-row">
+            <input type="text" id="food-name-search-input" placeholder="食品名を入力（例：おにぎり、カップヌードル）"
+              oninput="onFoodNameInput()" onkeydown="if(event.key==='Enter')searchFoodByName()">
+            <button onclick="searchFoodByName()">🔍 検索</button>
+          </div>
+
+          <!-- 検索中インジケータ -->
+          <div id="api-search-loading">
+            <span class="chat-spinner"></span> Open Food Facts で検索中…
+          </div>
+
+          <!-- API 検索結果（自動入力対応） -->
+          <div id="api-search-results">
+            <div class="api-results-label">▼ タップで栄養データを自動入力</div>
+            <div id="api-results-list"></div>
+          </div>
+
+          <!-- 外部サイトリンク（フォールバック） -->
+          <div class="web-search-links" id="web-search-links">
+            <div class="web-search-label">▼ 外部サイトで栄養素を確認する</div>
+            <div class="ext-link-row">
+              <a id="ext-mognavi" class="ext-link-btn ext-btn-mognavi" href="#" target="_blank" rel="noopener">
+                🍱 もぐナビ
+              </a>
+              <a id="ext-slism" class="ext-link-btn ext-btn-slism" href="#" target="_blank" rel="noopener">
+                🥗 Slism
+              </a>
+              <a id="ext-google" class="ext-link-btn ext-btn-google" href="#" target="_blank" rel="noopener">
+                🔍 Google
+              </a>
+            </div>
+            <p class="scan-hint">確認後、下の手入力フォームから登録してください</p>
+          </div>
+        </div>
+        <!-- ══ /バーコード・食品検索カード ══ -->
+
+        <div class="input-card" id="manual-input-form">
           <h3>食品を手入力</h3>
           <div style="background:var(--bg);border-radius:12px;padding:10px 12px;margin-bottom:12px;font-size:13px;color:var(--sub)">
             📅 記録日：<span id="inputDateLbl" style="color:var(--bl);font-weight:700">今日</span>
@@ -1368,6 +1658,290 @@ function toast(msg){
   const t=document.getElementById('toast');
   t.textContent=msg;t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+// ══════════════════════════════════════════════
+//  バーコードスキャン & 食品検索
+// ══════════════════════════════════════════════
+
+// ZXing ライブラリを動的ロード（初回のみ）
+let _zxingLoaded = false;
+let _zxingReader = null;
+let _scanResultCache = null; // 反映用にキャッシュ
+
+function loadZXing(callback) {
+  if (_zxingLoaded) { callback(); return; }
+  const s = document.createElement('script');
+  s.src = 'https://unpkg.com/@zxing/library@0.19.1/umd/index.min.js';
+  s.onload = () => { _zxingLoaded = true; callback(); };
+  s.onerror = () => toast('⚠️ バーコードライブラリの読み込みに失敗しました');
+  document.head.appendChild(s);
+}
+
+function startBarcodeScanner() {
+  // HTTPS / localhost 以外ではカメラAPIが使えない
+  if (!window.isSecureContext) {
+    toast('⚠️ カメラはHTTPS環境でのみ使用できます。番号入力をご利用ください');
+    return;
+  }
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    toast('⚠️ このブラウザはカメラ機能に対応していません');
+    return;
+  }
+  loadZXing(() => {
+    const wrap = document.getElementById('barcode-video-wrap');
+    wrap.style.display = 'block';
+    hideScanResult();
+
+    try {
+      _zxingReader = new ZXing.BrowserMultiFormatReader();
+      const p = _zxingReader.decodeFromVideoDevice(null, 'barcode-video', (result, err) => {
+        if (result) {
+          const code = result.getText();
+          stopBarcodeScanner();
+          onBarcodeDetected(code);
+        }
+        // err は読み取り中の一時エラーなので無視
+      });
+      if (p && typeof p.catch === 'function') {
+        p.catch(e => {
+          console.error('Camera error:', e);
+          toast('⚠️ カメラ起動失敗: ' + (e && (e.message || e.name) || 'unknown'));
+          wrap.style.display = 'none';
+        });
+      }
+    } catch(e) {
+      console.error('Scanner init error:', e);
+      toast('⚠️ カメラの起動に失敗しました');
+      wrap.style.display = 'none';
+    }
+  });
+}
+
+function stopBarcodeScanner() {
+  if (_zxingReader) {
+    try { _zxingReader.reset(); } catch(e) {}
+    _zxingReader = null;
+  }
+  document.getElementById('barcode-video-wrap').style.display = 'none';
+}
+
+// バーコード番号を手入力するダイアログ
+function openManualBarcode() {
+  const code = prompt('バーコード番号（JANコード）を入力してください');
+  if (code && code.trim()) onBarcodeDetected(code.trim());
+}
+
+// バーコード検出後の処理
+async function onBarcodeDetected(code) {
+  toast('📦 読み取り完了: ' + code);
+
+  // ① 内蔵食品マスターから検索
+  const hit = (savedFoods || []).find(f => f.jan === code)
+           || builtinFoods().find(f => f.jan === code);
+
+  if (hit) {
+    showScanResult(hit);
+    return;
+  }
+
+  // ② Open Food Facts API で JAN ルックアップ
+  toast('🔍 Open Food Facts で検索中…');
+  const food = await fetchOpenFoodFactsByBarcode(code);
+  if (food) {
+    showScanResult(food);
+    return;
+  }
+
+  // ③ 見つからない → 外部サイト誘導（フォールバック）
+  toast('🔍 データベースに登録がありません。外部サイトをご確認ください');
+  const inp = document.getElementById('food-name-search-input');
+  inp.value = code;
+  showWebSearchLinks(code);
+}
+
+// Open Food Facts: JANコードで商品検索
+async function fetchOpenFoodFactsByBarcode(code) {
+  try {
+    const r = await fetch(`https://world.openfoodfacts.org/api/v0/product/${encodeURIComponent(code)}.json`);
+    const data = await r.json();
+    if (data.status !== 1 || !data.product) return null;
+    return offProductToFood(data.product, code);
+  } catch(e) {
+    console.error('OFF barcode lookup error:', e);
+    return null;
+  }
+}
+
+// OFFの商品オブジェクトを当アプリのfood形式に変換
+function offProductToFood(p, jan) {
+  const n = p.nutriments || {};
+  // kcal/100g を優先的に取得（kJしかない場合は変換）
+  let kcal = n['energy-kcal_100g'];
+  if (kcal == null && n.energy_100g) kcal = n.energy_100g / 4.184;
+  if (kcal == null && n['energy-kj_100g']) kcal = n['energy-kj_100g'] / 4.184;
+  if (kcal == null) return null; // カロリー不明は除外
+  const name = p.product_name_ja || p.product_name || p.generic_name_ja || p.generic_name || ('商品 ' + (jan || ''));
+  return {
+    jan: jan || p.code || '',
+    name: name.trim(),
+    brand: (p.brands || '').split(',')[0].trim(),
+    kcal: Math.round(kcal),
+    carb: +Number(n.carbohydrates_100g || 0).toFixed(1),
+    prot: +Number(n.proteins_100g || 0).toFixed(1),
+    fat:  +Number(n.fat_100g || 0).toFixed(1),
+    salt: +Number(n.salt_100g || 0).toFixed(2),
+    unit: '100g'
+  };
+}
+
+// スキャン結果を表示
+function showScanResult(food) {
+  _scanResultCache = food;
+  const nameTxt = food.brand ? `${food.name}（${food.brand}）` : food.name;
+  document.getElementById('scan-result-name').textContent = nameTxt;
+  document.getElementById('scan-result-kcal').textContent =
+    food.kcal + ' kcal / ' + (food.unit || '100g');
+  document.getElementById('scan-result-detail').textContent =
+    `炭水化物 ${food.carb??'-'}g  たんぱく質 ${food.prot??'-'}g  脂質 ${food.fat??'-'}g  塩分 ${food.salt??'-'}g`;
+  const box = document.getElementById('scan-result-box');
+  box.classList.add('show');
+}
+
+function hideScanResult() {
+  document.getElementById('scan-result-box').classList.remove('show');
+  _scanResultCache = null;
+}
+
+// 「入力フォームに反映」ボタン
+function applyScanResult() {
+  if (!_scanResultCache) return;
+  const f = _scanResultCache;
+  // 既存の手入力フォームの各フィールドに値をセット
+  setIfExists('f-name', f.name);
+  setIfExists('f-kcal', f.kcal);
+  setIfExists('f-unit', f.unit || '100g');
+  setIfExists('f-carb', f.carb ?? '');
+  setIfExists('f-prot', f.prot ?? '');
+  setIfExists('f-fat',  f.fat  ?? '');
+  setIfExists('f-salt', f.salt ?? '');
+  hideScanResult();
+  toast('✅ フォームに反映しました');
+  // 入力フォームまでスクロール
+  const form = document.getElementById('manual-input-form');
+  if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function setIfExists(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.value = val;
+}
+
+// 内蔵食品マスター（JANコード付き例）
+function builtinFoods() {
+  return [
+    { jan:'4901085615379', name:'カップヌードル レギュラー', kcal:351, carb:42, prot:10, fat:15, salt:4.7, unit:'1個(78g)' },
+    { jan:'4901085176672', name:'カップヌードル シーフード', kcal:302, carb:39, prot:9,  fat:12, salt:4.5, unit:'1個(75g)' },
+    { jan:'4901068400017', name:'ソイジョイ アーモンド&チョコレート', kcal:136, carb:11, prot:4, fat:8, salt:0.1, unit:'1本(30g)' },
+  ];
+}
+
+// ──────────────────────────────────────────────
+//  食品名テキスト検索
+// ──────────────────────────────────────────────
+
+function onFoodNameInput() {
+  // 入力欄が空になったら検索結果と外部リンクを非表示
+  const val = document.getElementById('food-name-search-input').value.trim();
+  if (!val) {
+    document.getElementById('web-search-links').classList.remove('show');
+    document.getElementById('api-search-results').classList.remove('show');
+  }
+}
+
+async function searchFoodByName() {
+  const val = document.getElementById('food-name-search-input').value.trim();
+  if (!val) { toast('食品名を入力してください'); return; }
+  // 外部リンクも更新（フォールバック）
+  showWebSearchLinks(val);
+  // Open Food Facts APIで栄養データ検索
+  await searchOpenFoodFacts(val);
+}
+
+let _apiResultsCache = [];
+
+async function searchOpenFoodFacts(query) {
+  const loadingEl = document.getElementById('api-search-loading');
+  const resultsEl = document.getElementById('api-search-results');
+  const listEl = document.getElementById('api-results-list');
+
+  loadingEl.style.display = 'block';
+  resultsEl.classList.remove('show');
+
+  try {
+    const url = 'https://world.openfoodfacts.org/cgi/search.pl'
+      + '?search_terms=' + encodeURIComponent(query)
+      + '&search_simple=1&action=process&json=1&page_size=15';
+    const r = await fetch(url);
+    const data = await r.json();
+    const products = (data.products || [])
+      .map(p => offProductToFood(p, p.code || ''))
+      .filter(f => f && f.kcal > 0);
+    _apiResultsCache = products.slice(0, 10);
+
+    if (!_apiResultsCache.length) {
+      listEl.innerHTML = '<div class="api-no-result">該当する栄養データが見つかりませんでした。<br>下の外部リンクから確認してください</div>';
+    } else {
+      listEl.innerHTML = _apiResultsCache.map((f, i) => `
+        <div class="api-result-card" onclick="applyApiResult(${i})">
+          <div class="api-result-name">${escapeHtml(f.name)}</div>
+          ${f.brand ? `<div class="api-result-brand">${escapeHtml(f.brand)}</div>` : ''}
+          <div class="api-result-nutri">
+            <span class="api-result-kcal">${f.kcal} kcal</span> / 100g
+            ・炭${f.carb}g ・た${f.prot}g ・脂${f.fat}g ・塩${f.salt}g
+          </div>
+        </div>
+      `).join('');
+    }
+    resultsEl.classList.add('show');
+  } catch(e) {
+    console.error('OFF search error:', e);
+    listEl.innerHTML = '<div class="api-no-result">⚠️ 通信エラーが発生しました。<br>下の外部リンクをご利用ください</div>';
+    resultsEl.classList.add('show');
+  } finally {
+    loadingEl.style.display = 'none';
+  }
+}
+
+// 検索結果カードクリック → スキャン結果として表示（その後フォームに反映可能）
+function applyApiResult(idx) {
+  const f = _apiResultsCache[idx];
+  if (!f) return;
+  showScanResult(f);
+  // 結果ボックスにスクロール
+  document.getElementById('scan-result-box').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function showWebSearchLinks(query) {
+  const qEnc = encodeURIComponent(query);
+
+  // もぐナビ：直接URL検索に対応していないため、Google site: 検索で代替
+  document.getElementById('ext-mognavi').href =
+    'https://www.google.com/search?q=' + encodeURIComponent('site:mognavi.jp ' + query);
+
+  // カロリーSlism：正しい検索URL形式 ?searchWord=...&search=1
+  document.getElementById('ext-slism').href =
+    'https://calorie.slism.jp/?searchWord=' + qEnc + '&search=1';
+
+  // Google：カロリーを含めて検索
+  document.getElementById('ext-google').href =
+    'https://www.google.com/search?q=' + encodeURIComponent(query + ' カロリー');
+
+  document.getElementById('web-search-links').classList.add('show');
 }
 
 // ============ INIT ============

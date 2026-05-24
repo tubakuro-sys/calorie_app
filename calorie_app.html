@@ -1847,6 +1847,249 @@ function builtinFoods() {
 }
 
 // ──────────────────────────────────────────────
+// 日本の基本食品データベース（文部科学省 食品成分表 ベース・100gあたり）
+// alias: かな漢字違い・同義語を入れておくと検索ヒット率が上がる
+// ──────────────────────────────────────────────
+function builtinJPFoods() {
+  return [
+    // 野菜
+    {name:'ピーマン', kcal:22, carb:5.1, prot:0.9, fat:0.2, salt:0,   cat:'野菜', alias:['ぴーまん','青ピーマン']},
+    {name:'パプリカ', kcal:30, carb:7.2, prot:1.0, fat:0.2, salt:0,   cat:'野菜', alias:['赤ピーマン']},
+    {name:'トマト',   kcal:19, carb:4.7, prot:0.7, fat:0.1, salt:0,   cat:'野菜', alias:['とまと']},
+    {name:'ミニトマト', kcal:29, carb:7.2, prot:1.1, fat:0.1, salt:0, cat:'野菜', alias:['プチトマト']},
+    {name:'にんじん', kcal:39, carb:9.3, prot:0.7, fat:0.2, salt:0.1, cat:'野菜', alias:['人参','ニンジン']},
+    {name:'たまねぎ', kcal:37, carb:8.8, prot:1.0, fat:0.1, salt:0,   cat:'野菜', alias:['玉ねぎ','玉葱','オニオン']},
+    {name:'きゅうり', kcal:14, carb:3.0, prot:1.0, fat:0.1, salt:0,   cat:'野菜', alias:['胡瓜','キュウリ']},
+    {name:'なす',     kcal:22, carb:5.1, prot:1.1, fat:0.1, salt:0,   cat:'野菜', alias:['茄子','ナス']},
+    {name:'キャベツ', kcal:23, carb:5.2, prot:1.3, fat:0.2, salt:0,   cat:'野菜', alias:['きゃべつ']},
+    {name:'レタス',   kcal:12, carb:2.8, prot:0.6, fat:0.1, salt:0,   cat:'野菜', alias:['れたす']},
+    {name:'ほうれん草', kcal:20, carb:3.1, prot:2.2, fat:0.4, salt:0, cat:'野菜', alias:['ホウレンソウ']},
+    {name:'白菜',     kcal:14, carb:3.2, prot:0.8, fat:0.1, salt:0,   cat:'野菜', alias:['はくさい','ハクサイ']},
+    {name:'大根',     kcal:18, carb:4.1, prot:0.5, fat:0.1, salt:0,   cat:'野菜', alias:['だいこん','ダイコン']},
+    {name:'ごぼう',   kcal:65, carb:15.4, prot:1.8, fat:0.1, salt:0,  cat:'野菜', alias:['牛蒡']},
+    {name:'じゃがいも', kcal:76, carb:17.6, prot:1.6, fat:0.1, salt:0, cat:'野菜', alias:['ジャガイモ','馬鈴薯','ポテト']},
+    {name:'さつまいも', kcal:132, carb:31.5, prot:1.2, fat:0.2, salt:0, cat:'野菜', alias:['薩摩芋','サツマイモ']},
+    {name:'ブロッコリー', kcal:33, carb:6.6, prot:4.3, fat:0.5, salt:0, cat:'野菜', alias:['ぶろっこりー']},
+    {name:'カリフラワー', kcal:27, carb:5.2, prot:3.0, fat:0.1, salt:0, cat:'野菜', alias:[]},
+    {name:'もやし',   kcal:14, carb:2.6, prot:1.7, fat:0.1, salt:0,   cat:'野菜', alias:['モヤシ']},
+    {name:'長ねぎ',   kcal:34, carb:8.3, prot:1.4, fat:0.1, salt:0,   cat:'野菜', alias:['白ねぎ','ねぎ','ネギ','長ネギ']},
+    {name:'小ねぎ',   kcal:27, carb:5.4, prot:2.0, fat:0.3, salt:0,   cat:'野菜', alias:['万能ねぎ','青ねぎ']},
+    {name:'にんにく', kcal:134, carb:28.4, prot:6.4, fat:0.9, salt:0, cat:'野菜', alias:['ニンニク','大蒜','ガーリック']},
+    {name:'しょうが', kcal:30, carb:6.6, prot:0.9, fat:0.3, salt:0,   cat:'野菜', alias:['生姜','ショウガ','ジンジャー']},
+    {name:'かぼちゃ', kcal:91, carb:20.6, prot:1.9, fat:0.3, salt:0,  cat:'野菜', alias:['南瓜','カボチャ','パンプキン']},
+    {name:'アスパラガス', kcal:22, carb:3.9, prot:2.6, fat:0.2, salt:0, cat:'野菜', alias:['アスパラ']},
+    {name:'オクラ',   kcal:30, carb:6.6, prot:2.1, fat:0.2, salt:0,   cat:'野菜', alias:[]},
+    {name:'しいたけ', kcal:19, carb:4.9, prot:3.0, fat:0.4, salt:0,   cat:'きのこ', alias:['椎茸','シイタケ']},
+    {name:'えのき',   kcal:22, carb:7.6, prot:2.7, fat:0.2, salt:0,   cat:'きのこ', alias:['えのき茸','エノキ']},
+    {name:'しめじ',   kcal:22, carb:5.2, prot:2.7, fat:0.6, salt:0,   cat:'きのこ', alias:['ぶなしめじ','シメジ']},
+    {name:'まいたけ', kcal:22, carb:4.4, prot:2.0, fat:0.5, salt:0,   cat:'きのこ', alias:['舞茸','マイタケ']},
+    {name:'エリンギ', kcal:24, carb:6.0, prot:2.8, fat:0.4, salt:0,   cat:'きのこ', alias:[]},
+    {name:'なめこ',   kcal:15, carb:5.4, prot:1.8, fat:0.2, salt:0,   cat:'きのこ', alias:['ナメコ']},
+    {name:'小松菜',   kcal:14, carb:2.4, prot:1.5, fat:0.2, salt:0,   cat:'野菜', alias:['こまつな','コマツナ']},
+    {name:'水菜',     kcal:23, carb:4.8, prot:2.2, fat:0.1, salt:0.1, cat:'野菜', alias:['みずな','ミズナ']},
+    {name:'れんこん', kcal:66, carb:15.5, prot:1.9, fat:0.1, salt:0.1, cat:'野菜', alias:['蓮根','レンコン']},
+    {name:'アボカド', kcal:176, carb:6.2, prot:2.5, fat:18.7, salt:0,  cat:'野菜', alias:['あぼかど','アボガド']},
+    {name:'とうもろこし(茹で)', kcal:99, carb:18.6, prot:3.5, fat:1.7, salt:0, cat:'野菜', alias:['コーン','とうきび']},
+    {name:'枝豆(茹で)', kcal:134, carb:8.9, prot:11.5, fat:6.1, salt:0, cat:'豆', alias:['えだまめ','エダマメ']},
+
+    // 肉
+    {name:'鶏むね肉(皮なし)', kcal:108, carb:0, prot:22.3, fat:1.5, salt:0.1, cat:'肉', alias:['鶏胸肉','とりむね','チキン胸']},
+    {name:'鶏むね肉(皮付き)', kcal:145, carb:0, prot:21.3, fat:5.9, salt:0.1, cat:'肉', alias:['鶏胸皮あり']},
+    {name:'鶏もも肉(皮なし)', kcal:113, carb:0, prot:19.0, fat:5.0, salt:0.2, cat:'肉', alias:['とりもも','チキンもも']},
+    {name:'鶏もも肉(皮付き)', kcal:190, carb:0, prot:16.6, fat:14.2, salt:0.2, cat:'肉', alias:['鶏もも皮あり']},
+    {name:'鶏ささみ', kcal:98, carb:0, prot:23.9, fat:0.8, salt:0.1, cat:'肉', alias:['ササミ','とりささみ']},
+    {name:'鶏ひき肉', kcal:171, carb:0, prot:17.5, fat:12.0, salt:0.1, cat:'肉', alias:['とりひき','鶏挽肉']},
+    {name:'豚バラ肉', kcal:366, carb:0.1, prot:14.4, fat:35.4, salt:0.1, cat:'肉', alias:['豚ばら']},
+    {name:'豚ロース', kcal:248, carb:0.2, prot:19.3, fat:19.2, salt:0.1, cat:'肉', alias:['ぶたロース']},
+    {name:'豚ヒレ',   kcal:118, carb:0.3, prot:22.2, fat:3.7, salt:0.1, cat:'肉', alias:['豚ひれ']},
+    {name:'豚もも肉', kcal:171, carb:0.2, prot:20.5, fat:10.2, salt:0.1, cat:'肉', alias:['豚もも']},
+    {name:'豚ひき肉', kcal:209, carb:0.1, prot:17.7, fat:17.2, salt:0.1, cat:'肉', alias:['ぶたひき','豚挽肉']},
+    {name:'牛バラ肉', kcal:371, carb:0.2, prot:14.4, fat:36.5, salt:0.1, cat:'肉', alias:['牛ばら','カルビ']},
+    {name:'牛もも肉', kcal:196, carb:0.5, prot:21.2, fat:13.3, salt:0.1, cat:'肉', alias:['牛もも']},
+    {name:'牛ヒレ',   kcal:177, carb:0.3, prot:20.5, fat:11.2, salt:0.1, cat:'肉', alias:['ヒレステーキ']},
+    {name:'牛肩ロース', kcal:240, carb:0.2, prot:17.9, fat:19.8, salt:0.1, cat:'肉', alias:[]},
+    {name:'牛ひき肉', kcal:251, carb:0.3, prot:17.1, fat:21.1, salt:0.2, cat:'肉', alias:['牛挽肉']},
+    {name:'ベーコン', kcal:400, carb:0.3, prot:12.9, fat:39.1, salt:2.0, cat:'肉', alias:['べーこん']},
+    {name:'ロースハム', kcal:211, carb:1.1, prot:18.6, fat:14.5, salt:2.5, cat:'肉', alias:['ハム']},
+    {name:'ウインナー', kcal:319, carb:3.3, prot:11.5, fat:30.6, salt:1.9, cat:'肉', alias:['ソーセージ','うぃんなー']},
+
+    // 魚介
+    {name:'鮭(さけ)', kcal:133, carb:0.1, prot:22.3, fat:4.1, salt:0.2, cat:'魚', alias:['サーモン','しゃけ']},
+    {name:'マグロ赤身', kcal:125, carb:0.1, prot:26.4, fat:1.4, salt:0.1, cat:'魚', alias:['まぐろ','鮪','マグロ']},
+    {name:'マグロ中トロ', kcal:253, carb:0.1, prot:21.4, fat:17.6, salt:0.2, cat:'魚', alias:['ちゅうとろ']},
+    {name:'カツオ',   kcal:114, carb:0.1, prot:25.8, fat:0.5, salt:0.1, cat:'魚', alias:['鰹','かつお']},
+    {name:'サバ',     kcal:247, carb:0.3, prot:20.6, fat:16.8, salt:0.3, cat:'魚', alias:['鯖','さば']},
+    {name:'アジ',     kcal:121, carb:0.1, prot:19.7, fat:4.5, salt:0.3, cat:'魚', alias:['鯵','あじ']},
+    {name:'イワシ',   kcal:169, carb:0.2, prot:19.2, fat:9.2, salt:0.2, cat:'魚', alias:['鰯','いわし']},
+    {name:'サンマ',   kcal:287, carb:0.1, prot:18.1, fat:25.6, salt:0.4, cat:'魚', alias:['秋刀魚','さんま']},
+    {name:'タラ',     kcal:77, carb:0.1, prot:17.6, fat:0.2, salt:0.3, cat:'魚', alias:['鱈','たら']},
+    {name:'ブリ',     kcal:257, carb:0.3, prot:21.4, fat:17.6, salt:0.1, cat:'魚', alias:['鰤','ぶり']},
+    {name:'カレイ',   kcal:95, carb:0.1, prot:19.6, fat:1.3, salt:0.3, cat:'魚', alias:['鰈','かれい']},
+    {name:'エビ',     kcal:95, carb:0,   prot:22.4, fat:0.5, salt:0.3, cat:'魚介', alias:['海老','えび']},
+    {name:'イカ',     kcal:88, carb:0.1, prot:17.9, fat:1.0, salt:0.5, cat:'魚介', alias:['烏賊','いか','スルメイカ']},
+    {name:'タコ',     kcal:76, carb:0.1, prot:16.4, fat:0.7, salt:0.7, cat:'魚介', alias:['蛸','たこ']},
+    {name:'ホタテ',   kcal:88, carb:1.5, prot:17.9, fat:0.9, salt:0.8, cat:'魚介', alias:['帆立','ほたて']},
+    {name:'うなぎ蒲焼き', kcal:285, carb:3.1, prot:23.0, fat:21.0, salt:1.3, cat:'魚', alias:['鰻','うなぎ']},
+    {name:'ツナ缶(油漬け)', kcal:265, carb:0.1, prot:17.7, fat:21.7, salt:0.9, cat:'魚', alias:['シーチキン','ツナ油漬け']},
+    {name:'ツナ缶(水煮)', kcal:71, carb:0.4, prot:16.0, fat:0.7, salt:0.5, cat:'魚', alias:['ツナ水煮','ノンオイルツナ']},
+    {name:'しらす干し', kcal:113, carb:0.1, prot:24.5, fat:1.1, salt:6.6, cat:'魚', alias:['シラス','じゃこ','ちりめんじゃこ']},
+
+    // 穀物・主食
+    {name:'白米(炊飯後)', kcal:156, carb:35.6, prot:2.5, fat:0.3, salt:0, cat:'主食', alias:['ご飯','ライス','米','白ご飯','ごはん']},
+    {name:'玄米(炊飯後)', kcal:152, carb:32.0, prot:2.8, fat:1.0, salt:0, cat:'主食', alias:['げんまい']},
+    {name:'もち米(炊飯後)', kcal:188, carb:41.9, prot:3.5, fat:0.5, salt:0, cat:'主食', alias:['おこわ']},
+    {name:'食パン',     kcal:248, carb:44.4, prot:8.9, fat:4.1, salt:1.2, cat:'主食', alias:['しょくぱん','トースト','パン']},
+    {name:'ロールパン', kcal:309, carb:48.6, prot:10.1, fat:9.0, salt:1.2, cat:'主食', alias:[]},
+    {name:'クロワッサン', kcal:438, carb:43.9, prot:7.9, fat:26.8, salt:1.2, cat:'主食', alias:[]},
+    {name:'うどん(茹で)', kcal:95, carb:21.6, prot:2.6, fat:0.4, salt:0.3, cat:'主食', alias:['うどん']},
+    {name:'そば(茹で)',   kcal:114, carb:26.0, prot:4.8, fat:0.7, salt:0,  cat:'主食', alias:['蕎麦']},
+    {name:'パスタ(茹で)', kcal:150, carb:32.2, prot:5.2, fat:0.9, salt:0,  cat:'主食', alias:['スパゲッティ','スパゲティ']},
+    {name:'中華麺(茹で)', kcal:149, carb:29.2, prot:4.9, fat:0.6, salt:0.2, cat:'主食', alias:['ラーメン麺']},
+    {name:'そうめん(茹で)', kcal:127, carb:25.8, prot:3.5, fat:0.4, salt:0.2, cat:'主食', alias:['素麺']},
+    {name:'切り餅',     kcal:234, carb:50.8, prot:4.0, fat:0.6, salt:0,    cat:'主食', alias:['餅','もち','お餅']},
+    {name:'肉まん',     kcal:251, carb:38.6, prot:9.5, fat:7.0, salt:1.3,  cat:'主食', alias:['豚まん','中華まん']},
+
+    // 卵・乳製品
+    {name:'卵',         kcal:142, carb:0.4, prot:12.2, fat:10.2, salt:0.4, cat:'卵', alias:['鶏卵','たまご','タマゴ']},
+    {name:'牛乳',       kcal:61, carb:4.8, prot:3.3, fat:3.8, salt:0.1,    cat:'乳製品', alias:['ミルク','ぎゅうにゅう']},
+    {name:'低脂肪牛乳', kcal:42, carb:5.5, prot:3.8, fat:1.0, salt:0.2,    cat:'乳製品', alias:[]},
+    {name:'豆乳(無調整)', kcal:44, carb:2.9, prot:3.6, fat:2.0, salt:0,    cat:'豆', alias:['とうにゅう']},
+    {name:'豆乳(調整)',   kcal:63, carb:4.5, prot:3.2, fat:3.6, salt:0.1,  cat:'豆', alias:[]},
+    {name:'ヨーグルト(無糖)', kcal:56, carb:4.9, prot:3.6, fat:3.0, salt:0.1, cat:'乳製品', alias:['プレーンヨーグルト']},
+    {name:'ヨーグルト(加糖)', kcal:65, carb:11.9, prot:4.3, fat:0.2, salt:0.1, cat:'乳製品', alias:[]},
+    {name:'プロセスチーズ', kcal:313, carb:1.3, prot:22.7, fat:26.0, salt:2.8, cat:'乳製品', alias:['チーズ']},
+    {name:'モッツァレラチーズ', kcal:269, carb:4.2, prot:18.4, fat:19.9, salt:0.2, cat:'乳製品', alias:[]},
+    {name:'バター',     kcal:700, carb:0.2, prot:0.6, fat:81.0, salt:1.9,  cat:'乳製品', alias:['ばたー']},
+    {name:'生クリーム', kcal:404, carb:6.5, prot:1.9, fat:43.0, salt:0.1,  cat:'乳製品', alias:['ホイップクリーム']},
+
+    // 大豆製品
+    {name:'絹豆腐',     kcal:56, carb:2.0, prot:5.3, fat:3.5, salt:0,      cat:'豆', alias:['きぬとうふ','豆腐','とうふ']},
+    {name:'木綿豆腐',   kcal:73, carb:1.5, prot:7.0, fat:4.9, salt:0,      cat:'豆', alias:['もめんとうふ']},
+    {name:'納豆',       kcal:184, carb:12.1, prot:16.5, fat:10.0, salt:0,  cat:'豆', alias:['なっとう']},
+    {name:'油揚げ',     kcal:410, carb:0.4, prot:23.4, fat:34.4, salt:0,   cat:'豆', alias:['あぶらあげ']},
+    {name:'厚揚げ',     kcal:150, carb:0.9, prot:10.7, fat:11.3, salt:0,   cat:'豆', alias:['生揚げ']},
+    {name:'味噌',       kcal:217, carb:17.0, prot:12.5, fat:6.0, salt:12.4, cat:'調味料', alias:['みそ','ミソ']},
+    {name:'きな粉',     kcal:437, carb:28.5, prot:36.7, fat:25.7, salt:0,  cat:'豆', alias:[]},
+
+    // 果物
+    {name:'りんご',     kcal:53, carb:14.6, prot:0.2, fat:0.2, salt:0,     cat:'果物', alias:['林檎','リンゴ','アップル']},
+    {name:'バナナ',     kcal:86, carb:22.5, prot:1.1, fat:0.2, salt:0,     cat:'果物', alias:['ばなな']},
+    {name:'みかん',     kcal:45, carb:12.0, prot:0.7, fat:0.1, salt:0,     cat:'果物', alias:['蜜柑','ミカン']},
+    {name:'オレンジ',   kcal:39, carb:9.0, prot:1.0, fat:0.1, salt:0,      cat:'果物', alias:['おれんじ']},
+    {name:'いちご',     kcal:31, carb:8.5, prot:0.9, fat:0.1, salt:0,      cat:'果物', alias:['苺','イチゴ','ストロベリー']},
+    {name:'ぶどう',     kcal:59, carb:15.7, prot:0.4, fat:0.1, salt:0,     cat:'果物', alias:['葡萄','ブドウ','グレープ']},
+    {name:'桃',         kcal:40, carb:10.2, prot:0.6, fat:0.1, salt:0,     cat:'果物', alias:['もも','ピーチ']},
+    {name:'キウイ',     kcal:51, carb:13.4, prot:1.0, fat:0.2, salt:0,     cat:'果物', alias:['キウイフルーツ']},
+    {name:'パイナップル', kcal:51, carb:13.4, prot:0.6, fat:0.1, salt:0,   cat:'果物', alias:['パイン']},
+    {name:'グレープフルーツ', kcal:38, carb:9.6, prot:0.9, fat:0.1, salt:0, cat:'果物', alias:[]},
+    {name:'レモン',     kcal:43, carb:12.5, prot:0.9, fat:0.7, salt:0,     cat:'果物', alias:['檸檬']},
+    {name:'柿',         kcal:60, carb:15.9, prot:0.4, fat:0.2, salt:0,     cat:'果物', alias:['かき','カキ']},
+    {name:'梨',         kcal:38, carb:11.3, prot:0.3, fat:0.1, salt:0,     cat:'果物', alias:['なし','ナシ']},
+    {name:'メロン',     kcal:42, carb:10.4, prot:1.1, fat:0.1, salt:0,     cat:'果物', alias:['めろん']},
+    {name:'スイカ',     kcal:37, carb:9.5, prot:0.6, fat:0.1, salt:0,      cat:'果物', alias:['西瓜','すいか']},
+
+    // 調味料・油脂
+    {name:'醤油',       kcal:71, carb:8.3, prot:7.7, fat:0, salt:14.5,     cat:'調味料', alias:['しょうゆ','ショウユ','ソイソース']},
+    {name:'砂糖',       kcal:384, carb:99.2, prot:0, fat:0, salt:0,        cat:'調味料', alias:['上白糖','さとう','シュガー']},
+    {name:'塩',         kcal:0,   carb:0,    prot:0, fat:0, salt:99.5,     cat:'調味料', alias:['食塩','しお','ソルト']},
+    {name:'酢',         kcal:25, carb:2.4, prot:0.1, fat:0, salt:0,        cat:'調味料', alias:['お酢','穀物酢','酢']},
+    {name:'マヨネーズ', kcal:668, carb:4.5, prot:1.4, fat:72.5, salt:1.9,  cat:'調味料', alias:['まよねーず']},
+    {name:'ケチャップ', kcal:106, carb:27.6, prot:1.6, fat:0.2, salt:3.1,  cat:'調味料', alias:['けちゃっぷ']},
+    {name:'みりん',     kcal:241, carb:43.2, prot:0.3, fat:0, salt:0,      cat:'調味料', alias:['味醂']},
+    {name:'ごま油',     kcal:921, carb:0, prot:0, fat:100.0, salt:0,       cat:'油', alias:['胡麻油']},
+    {name:'オリーブオイル', kcal:921, carb:0, prot:0, fat:100.0, salt:0,   cat:'油', alias:['オリーブ油']},
+    {name:'サラダ油',   kcal:921, carb:0, prot:0, fat:100.0, salt:0,       cat:'油', alias:['菜種油','植物油']},
+
+    // 調理済み料理（家庭・外食の一般的な値。100gあたり目安）
+    {name:'ハンバーグ',     kcal:223, carb:8.9,  prot:13.4, fat:14.7, salt:1.0, cat:'料理', alias:['はんばーぐ','合いびきハンバーグ']},
+    {name:'ピーマンの肉詰め', kcal:152, carb:6.0, prot:9.5, fat:9.6, salt:0.9, cat:'料理', alias:['ぴーまんのにくづめ']},
+    {name:'肉じゃが',       kcal:128, carb:16.2, prot:5.0, fat:4.3, salt:1.0, cat:'料理', alias:['にくじゃが']},
+    {name:'カレーライス',   kcal:132, carb:18.0, prot:3.6, fat:4.7, salt:1.0, cat:'料理', alias:['カレー','ビーフカレー','ポークカレー']},
+    {name:'牛丼',           kcal:153, carb:21.0, prot:6.6, fat:4.4, salt:1.0, cat:'料理', alias:['ぎゅうどん']},
+    {name:'親子丼',         kcal:130, carb:16.6, prot:7.6, fat:3.6, salt:0.9, cat:'料理', alias:['おやこどん']},
+    {name:'カツ丼',         kcal:167, carb:21.0, prot:7.3, fat:5.4, salt:0.9, cat:'料理', alias:['かつ丼','とんかつ丼']},
+    {name:'天丼',           kcal:165, carb:24.0, prot:6.0, fat:4.5, salt:0.9, cat:'料理', alias:['てんどん']},
+    {name:'うな丼',         kcal:250, carb:31.0, prot:10.0, fat:8.5, salt:1.1, cat:'料理', alias:['うなぎ丼','うな重']},
+    {name:'チャーハン',     kcal:207, carb:28.0, prot:5.6, fat:7.0, salt:1.0, cat:'料理', alias:['炒飯']},
+    {name:'オムライス',     kcal:167, carb:22.0, prot:5.0, fat:6.0, salt:0.8, cat:'料理', alias:['おむらいす']},
+    {name:'醤油ラーメン',   kcal:100, carb:14.2, prot:4.5, fat:2.5, salt:1.5, cat:'料理', alias:['ラーメン']},
+    {name:'味噌ラーメン',   kcal:120, carb:15.0, prot:5.0, fat:4.0, salt:1.7, cat:'料理', alias:['みそラーメン']},
+    {name:'豚骨ラーメン',   kcal:135, carb:14.0, prot:5.5, fat:6.0, salt:1.5, cat:'料理', alias:['とんこつラーメン']},
+    {name:'つけ麺',         kcal:140, carb:22.0, prot:5.5, fat:3.0, salt:1.4, cat:'料理', alias:['つけめん']},
+    {name:'焼きそば',       kcal:162, carb:24.0, prot:4.6, fat:4.8, salt:1.0, cat:'料理', alias:['やきそば','ソース焼きそば']},
+    {name:'お好み焼き',     kcal:188, carb:18.0, prot:7.6, fat:9.0, salt:1.2, cat:'料理', alias:['おこのみやき']},
+    {name:'たこ焼き',       kcal:191, carb:18.5, prot:6.5, fat:9.0, salt:1.0, cat:'料理', alias:['タコ焼き']},
+    {name:'餃子',           kcal:196, carb:19.0, prot:7.0, fat:9.0, salt:1.0, cat:'料理', alias:['ぎょうざ','焼き餃子','ギョーザ']},
+    {name:'唐揚げ',         kcal:290, carb:8.0, prot:16.0, fat:21.5, salt:1.2, cat:'料理', alias:['からあげ','鶏のからあげ','ザンギ']},
+    {name:'とんかつ',       kcal:344, carb:13.8, prot:18.4, fat:23.5, salt:0.8, cat:'料理', alias:['トンカツ','豚カツ']},
+    {name:'チキンカツ',     kcal:240, carb:14.0, prot:18.0, fat:12.5, salt:0.8, cat:'料理', alias:['鶏カツ']},
+    {name:'エビフライ',     kcal:225, carb:13.0, prot:13.0, fat:13.5, salt:1.0, cat:'料理', alias:['海老フライ']},
+    {name:'コロッケ',       kcal:226, carb:25.0, prot:5.3, fat:11.5, salt:0.9, cat:'料理', alias:['ころっけ']},
+    {name:'メンチカツ',     kcal:273, carb:18.0, prot:11.0, fat:17.5, salt:1.0, cat:'料理', alias:[]},
+    {name:'焼き鳥(タレ)',   kcal:204, carb:7.5, prot:18.0, fat:11.0, salt:1.3, cat:'料理', alias:['やきとり']},
+    {name:'焼き鳥(塩)',     kcal:181, carb:0,   prot:18.5, fat:11.5, salt:1.0, cat:'料理', alias:[]},
+    {name:'麻婆豆腐',       kcal:109, carb:5.3, prot:7.7, fat:6.7, salt:1.5, cat:'料理', alias:['マーボー豆腐']},
+    {name:'八宝菜',         kcal:122, carb:7.6, prot:7.0, fat:6.8, salt:1.4, cat:'料理', alias:['はっぽうさい']},
+    {name:'酢豚',           kcal:168, carb:18.0, prot:8.0, fat:7.0, salt:1.2, cat:'料理', alias:['すぶた']},
+    {name:'青椒肉絲',       kcal:132, carb:8.4, prot:9.0, fat:6.8, salt:1.5, cat:'料理', alias:['チンジャオロース']},
+    {name:'回鍋肉',         kcal:170, carb:8.0, prot:9.0, fat:11.5, salt:1.6, cat:'料理', alias:['ホイコーロー']},
+    {name:'春巻き',         kcal:235, carb:24.0, prot:6.5, fat:12.0, salt:1.0, cat:'料理', alias:['はるまき']},
+    {name:'シュウマイ',     kcal:194, carb:18.0, prot:9.0, fat:9.0, salt:1.1, cat:'料理', alias:['焼売','シュウマイ']},
+    {name:'おにぎり(梅)',   kcal:170, carb:36.0, prot:3.0, fat:0.5, salt:1.5, cat:'料理', alias:['梅おにぎり']},
+    {name:'おにぎり(鮭)',   kcal:180, carb:35.0, prot:5.0, fat:1.5, salt:1.4, cat:'料理', alias:['鮭おにぎり','さけおにぎり']},
+    {name:'おにぎり(ツナマヨ)', kcal:200, carb:33.0, prot:4.5, fat:5.5, salt:1.3, cat:'料理', alias:['ツナマヨおにぎり']},
+    {name:'味噌汁',         kcal:27, carb:3.0, prot:1.7, fat:1.0, salt:1.2, cat:'料理', alias:['みそ汁']},
+    {name:'卵焼き',         kcal:146, carb:6.0, prot:9.5, fat:9.0, salt:1.0, cat:'料理', alias:['たまごやき','だし巻き卵']},
+    {name:'目玉焼き',       kcal:175, carb:0.4, prot:13.0, fat:13.5, salt:0.7, cat:'料理', alias:['めだまやき']},
+    {name:'ハンバーガー',   kcal:244, carb:30.0, prot:13.0, fat:9.0, salt:1.4, cat:'料理', alias:['バーガー']},
+    {name:'チーズバーガー', kcal:280, carb:30.0, prot:14.5, fat:11.5, salt:1.7, cat:'料理', alias:[]},
+    {name:'フライドポテト', kcal:312, carb:38.0, prot:3.5, fat:16.0, salt:0.7, cat:'料理', alias:['ポテト','ポテトフライ']},
+    {name:'ピザ',           kcal:268, carb:30.0, prot:11.0, fat:11.5, salt:1.3, cat:'料理', alias:['ぴざ','ピッツァ']},
+    {name:'サンドイッチ(ハム)', kcal:250, carb:24.0, prot:10.0, fat:13.0, salt:1.5, cat:'料理', alias:['サンド']},
+    {name:'サンドイッチ(卵)', kcal:267, carb:24.0, prot:8.0, fat:15.0, salt:1.0, cat:'料理', alias:['たまごサンド']},
+    {name:'グラタン',       kcal:165, carb:13.0, prot:6.5, fat:9.0, salt:1.0, cat:'料理', alias:['ぐらたん']},
+    {name:'ドリア',         kcal:168, carb:18.0, prot:5.5, fat:8.0, salt:1.0, cat:'料理', alias:['どりあ']},
+    {name:'カルボナーラ',   kcal:200, carb:18.0, prot:8.0, fat:11.0, salt:1.3, cat:'料理', alias:['ぱすたカルボナーラ']},
+    {name:'ミートソース',   kcal:160, carb:20.0, prot:6.0, fat:6.5, salt:1.2, cat:'料理', alias:['ボロネーゼ','ミートスパゲッティ']},
+    {name:'ナポリタン',     kcal:158, carb:23.0, prot:5.5, fat:5.5, salt:1.3, cat:'料理', alias:['なぽりたん']},
+    {name:'寿司(にぎり)',   kcal:152, carb:24.0, prot:7.0, fat:2.5, salt:0.8, cat:'料理', alias:['すし','握り寿司']},
+    {name:'いなり寿司',     kcal:201, carb:32.0, prot:5.0, fat:5.5, salt:1.0, cat:'料理', alias:['いなり','稲荷寿司']},
+    {name:'巻き寿司',       kcal:165, carb:30.0, prot:5.5, fat:2.5, salt:0.9, cat:'料理', alias:['巻きずし','のり巻き']},
+    {name:'ちらし寿司',     kcal:158, carb:27.0, prot:6.0, fat:3.0, salt:1.0, cat:'料理', alias:['ちらし']},
+    {name:'肉まん',         kcal:251, carb:38.6, prot:9.5, fat:7.0, salt:1.3, cat:'料理', alias:['豚まん','中華まん']},
+    {name:'あんまん',       kcal:268, carb:51.0, prot:6.5, fat:5.0, salt:0.3, cat:'料理', alias:[]},
+    {name:'カップ焼きそば', kcal:380, carb:62.0, prot:8.0, fat:13.0, salt:4.5, cat:'料理', alias:['カップやきそば']},
+    {name:'カップ麺(醤油)', kcal:435, carb:60.0, prot:10.0, fat:18.0, salt:5.5, cat:'料理', alias:['カップラーメン']},
+  ].map(f => ({...f, unit:'100g'}));
+}
+
+// 文字列正規化（小文字化・全角→半角・カタカナ→ひらがな簡易対応）
+function _normFood(s) {
+  if (!s) return '';
+  return String(s).toLowerCase().trim()
+    .replace(/[ァ-ヶ]/g, ch => String.fromCharCode(ch.charCodeAt(0) - 0x60)) // カタカナ→ひらがな
+    .replace(/[Ａ-Ｚａ-ｚ０-９]/g, ch => String.fromCharCode(ch.charCodeAt(0) - 0xFEE0)); // 全角英数→半角
+}
+
+// 内蔵DBから検索（部分一致・優先度スコアリング）
+function searchBuiltinJPFoods(query) {
+  const q = _normFood(query);
+  if (!q) return [];
+  const scored = [];
+  for (const f of builtinJPFoods()) {
+    const hay = [f.name, ...(f.alias || [])].map(_normFood);
+    let score = 0;
+    if (hay.some(h => h === q)) score = 100;
+    else if (hay.some(h => h.startsWith(q))) score = 80;
+    else if (hay.some(h => h.includes(q))) score = 60;
+    else if (q.length >= 2 && hay.some(h => h.length >= 2 && q.includes(h))) score = 30;
+    if (score > 0) scored.push({food:f, score});
+  }
+  scored.sort((a,b) => b.score - a.score);
+  return scored.slice(0, 10).map(r => r.food);
+}
+
+// ──────────────────────────────────────────────
 //  食品名テキスト検索
 // ──────────────────────────────────────────────
 
@@ -1862,10 +2105,38 @@ function onFoodNameInput() {
 async function searchFoodByName() {
   const val = document.getElementById('food-name-search-input').value.trim();
   if (!val) { toast('食品名を入力してください'); return; }
-  // 外部リンクも更新（フォールバック）
+  // 外部リンクも更新（最終フォールバック）
   showWebSearchLinks(val);
-  // Open Food Facts APIで栄養データ検索
+
+  // ① 内蔵DBから検索
+  const localHits = searchBuiltinJPFoods(val);
+  if (localHits.length > 0) {
+    renderLocalResults(localHits);
+    return;
+  }
+
+  // ② 内蔵DBにヒットなし → OFF APIへフォールバック
+  toast('🌐 内蔵DBに無いためOpen Food Factsで検索…');
   await searchOpenFoodFacts(val);
+}
+
+// 内蔵DBの結果を表示
+function renderLocalResults(foods) {
+  const resultsEl = document.getElementById('api-search-results');
+  const listEl = document.getElementById('api-results-list');
+  _apiResultsCache = foods;
+  listEl.innerHTML = '<div style="font-size:11px;color:var(--g);margin-bottom:6px;font-weight:700">📗 日本の食品データベース</div>' +
+    foods.map((f, i) => `
+      <div class="api-result-card" onclick="applyApiResult(${i})">
+        <div class="api-result-name">${escapeHtml(f.name)}</div>
+        ${f.cat ? `<div class="api-result-brand">${escapeHtml(f.cat)}</div>` : ''}
+        <div class="api-result-nutri">
+          <span class="api-result-kcal">${f.kcal} kcal</span> / 100g
+          ・炭${f.carb}g ・た${f.prot}g ・脂${f.fat}g ・塩${f.salt}g
+        </div>
+      </div>
+    `).join('');
+  resultsEl.classList.add('show');
 }
 
 let _apiResultsCache = [];
@@ -1879,11 +2150,18 @@ async function searchOpenFoodFacts(query) {
   resultsEl.classList.remove('show');
 
   try {
-    const url = 'https://world.openfoodfacts.org/cgi/search.pl'
+    // v2 API（CORS対応・JSON返却）。カスタムヘッダーは付けないこと（preflight回避）
+    const fields = 'product_name,product_name_ja,generic_name,generic_name_ja,brands,nutriments,code';
+    const url = 'https://world.openfoodfacts.org/api/v2/search'
       + '?search_terms=' + encodeURIComponent(query)
-      + '&search_simple=1&action=process&json=1&page_size=15';
+      + '&lc=ja&fields=' + fields
+      + '&page_size=20';
+    console.log('[OFF] fetching:', url);
     const r = await fetch(url);
+    console.log('[OFF] response:', r.status, r.statusText);
+    if (!r.ok) throw new Error('HTTP ' + r.status + ' ' + r.statusText);
     const data = await r.json();
+    console.log('[OFF] products:', data.count, 'total /', (data.products||[]).length, 'returned');
     const products = (data.products || [])
       .map(p => offProductToFood(p, p.code || ''))
       .filter(f => f && f.kcal > 0);
@@ -1905,8 +2183,12 @@ async function searchOpenFoodFacts(query) {
     }
     resultsEl.classList.add('show');
   } catch(e) {
-    console.error('OFF search error:', e);
-    listEl.innerHTML = '<div class="api-no-result">⚠️ 通信エラーが発生しました。<br>下の外部リンクをご利用ください</div>';
+    console.error('[OFF] search error:', e);
+    const detail = e && (e.message || e.name) || 'unknown';
+    listEl.innerHTML = '<div class="api-no-result">⚠️ 通信エラー: ' + escapeHtml(detail) + '<br><br>'
+      + 'CORS/ネットワーク問題の可能性があります。<br>'
+      + 'F12 → Console でエラー詳細を確認してください。<br>'
+      + '下の外部リンクもご利用いただけます</div>';
     resultsEl.classList.add('show');
   } finally {
     loadingEl.style.display = 'none';

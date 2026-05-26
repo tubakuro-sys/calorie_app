@@ -201,172 +201,7 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;font-size:15px;color:var(--
 .toast{position:fixed;bottom:calc(84px + var(--safe-bottom));left:50%;transform:translateX(-50%) translateY(10px);background:rgba(28,28,30,.92);color:#fff;padding:12px 20px;border-radius:14px;font-size:14px;font-weight:600;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none;z-index:2000;white-space:nowrap;max-width:calc(100vw - 40px);text-align:center}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .empty-msg{text-align:center;padding:24px;color:var(--sub);font-size:14px;line-height:1.7}
-/* ── バーコード・食品検索UI ─────────────────── */
-.food-search-card {
-  background: var(--card);
-  border-radius: 18px;
-  padding: 16px;
-  margin-bottom: 14px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-}
-.food-search-card h3 {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--tx);
-}
-.scan-btn-row {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-.scan-btn {
-  flex: 1;
-  padding: 12px 8px;
-  border-radius: 12px;
-  border: none;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  transition: opacity 0.15s;
-  font-family: 'Noto Sans JP', sans-serif;
-}
-.scan-btn:active { opacity: 0.7; }
-.scan-btn-cam  { background: #0A84FF; color: #fff; }
-.scan-btn-type { background: var(--bg); color: var(--tx); }
-.scan-btn .scan-icon { font-size: 22px; }
 
-#barcode-video-wrap {
-  display: none;
-  margin-bottom: 12px;
-}
-#barcode-video-wrap video {
-  width: 100%;
-  border-radius: 12px;
-  background: #000;
-  max-height: 220px;
-  object-fit: cover;
-}
-.scan-hint {
-  font-size: 11px;
-  color: var(--sub);
-  text-align: center;
-  margin-top: 4px;
-}
-.scan-cancel-btn {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  border-radius: 10px;
-  border: none;
-  background: var(--bg);
-  color: var(--sub);
-  font-size: 13px;
-  cursor: pointer;
-  font-family: 'Noto Sans JP', sans-serif;
-}
-
-.food-name-search-row {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-.food-name-search-row input {
-  flex: 1;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1.5px solid var(--bdr);
-  background: var(--bg);
-  color: var(--tx);
-  font-size: 14px;
-  font-family: 'Noto Sans JP', sans-serif;
-  outline: none;
-}
-.food-name-search-row input:focus { border-color: var(--bl); }
-.food-name-search-row button {
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: none;
-  background: #30D158;
-  color: #fff;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  font-family: 'Noto Sans JP', sans-serif;
-}
-
-.web-search-links {
-  display: none;
-  flex-direction: column;
-  gap: 8px;
-}
-.web-search-links.show { display: flex; }
-.web-search-label {
-  font-size: 11px;
-  color: var(--sub);
-  margin-bottom: 2px;
-}
-.ext-link-row {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.ext-link-btn {
-  flex: 1;
-  min-width: 90px;
-  padding: 9px 6px;
-  border-radius: 10px;
-  border: none;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  transition: opacity 0.15s;
-  font-family: 'Noto Sans JP', sans-serif;
-}
-.ext-link-btn:active { opacity: 0.7; }
-.ext-btn-mognavi  { background: #FF9F0A22; color: #FF9F0A; }
-.ext-btn-slism    { background: #30D15822; color: #30D158; }
-.ext-btn-google   { background: #0A84FF22; color: #0A84FF; }
-
-.scan-result-box {
-  display: none;
-  background: var(--bg);
-  border-radius: 12px;
-  padding: 12px 14px;
-  margin-top: 10px;
-  font-size: 13px;
-}
-.scan-result-box.show { display: block; }
-.scan-result-name {
-  font-weight: 700;
-  font-size: 15px;
-  margin-bottom: 4px;
-}
-.scan-result-kcal {
-  color: #FF9F0A;
-  font-weight: 600;
-}
-.scan-result-use-btn {
-  width: 100%;
-  margin-top: 10px;
-  padding: 11px;
-  border-radius: 10px;
-  border: none;
-  background: #0A84FF;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: 'Noto Sans JP', sans-serif;
-}
 /* Open Food Facts API 検索結果 */
 #api-search-loading {
   display: none;
@@ -490,40 +325,16 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;font-size:15px;color:var(--
         </div>
         <!-- ══ バーコード・食品検索カード ══ -->
         <div class="food-search-card">
-          <h3>📷 バーコード / 食品検索</h3>
-
-          <!-- カメラスキャン ボタン行 -->
-          <div class="scan-btn-row">
-            <button class="scan-btn scan-btn-cam" onclick="startBarcodeScanner()">
-              <span class="scan-icon">📷</span>カメラで読み取り
-            </button>
-            <button class="scan-btn scan-btn-type" onclick="openManualBarcode()">
-              <span class="scan-icon">🔢</span>番号を入力
-            </button>
-          </div>
-
-          <!-- カメラビュー -->
-          <div id="barcode-video-wrap">
-            <video id="barcode-video" autoplay playsinline muted></video>
-            <p class="scan-hint">バーコードをカメラに向けてください</p>
-            <button class="scan-cancel-btn" onclick="stopBarcodeScanner()">✕ キャンセル</button>
-          </div>
-
-          <!-- スキャン結果 -->
-          <div class="scan-result-box" id="scan-result-box">
-            <div class="scan-result-name" id="scan-result-name">—</div>
-            <div class="scan-result-kcal" id="scan-result-kcal"></div>
-            <div id="scan-result-detail" style="font-size:12px;color:var(--sub);margin-top:2px"></div>
-            <button class="scan-result-use-btn" onclick="applyScanResult()">この食品を入力フォームに反映</button>
-          </div>
-
-          <hr style="border:none;border-top:1px solid var(--bdr);margin:12px 0">
+          <h3>🔍 食品検索</h3>
 
           <!-- 食品名テキスト検索 -->
           <div class="food-name-search-row">
-            <input type="text" id="food-name-search-input" placeholder="食品名を入力（例：おにぎり、カップヌードル）"
+            <input type="text" id="food-name-search-input" placeholder="食品名を入力（例：ハンバーグ、マックポテトM）"
               oninput="onFoodNameInput()" onkeydown="if(event.key==='Enter')searchFoodByName()">
             <button onclick="searchFoodByName()">🔍 検索</button>
+          </div>
+          <div style="display:flex;gap:6px;margin-bottom:8px">
+            <button onclick="searchFoodByNameAI()" style="flex:1;padding:9px;background:#E5F2FF;border:none;border-radius:10px;color:var(--bl);font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif">🤖 AIで栄養素を推定する</button>
           </div>
 
           <!-- 検索中インジケータ -->
@@ -610,9 +421,18 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;font-size:15px;color:var(--
           <div id="balanceAdvice" style="background:var(--bg);border-radius:12px;padding:12px;font-size:13px;color:var(--tx);line-height:1.6;margin-bottom:12px"></div>
         </div>
         <div class="recipe-card">
+          <h3>🔍 料理名から栄養素を調べる</h3>
+          <div style="font-size:12px;color:var(--sub);margin-bottom:10px">AIが料理名からカロリー・栄養素を推定します</div>
+          <div style="display:flex;gap:8px;margin-bottom:8px">
+            <input type="text" id="ai-food-input" placeholder="例: ハンバーグ、マックのポテトM" style="flex:1;padding:11px 12px;border:1.5px solid var(--bdr);border-radius:12px;font-size:14px;background:var(--bg);color:var(--tx);outline:none;font-family:'Noto Sans JP',sans-serif" onkeydown="if(event.key==='Enter')aiFoodLookup()">
+            <button onclick="aiFoodLookup()" style="padding:11px 14px;background:var(--bl);border:none;border-radius:12px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif;white-space:nowrap">調べる</button>
+          </div>
+          <div id="ai-food-result"></div>
+        </div>
+        <div class="recipe-card">
           <h3>🍽 おすすめレシピ</h3>
           <div style="font-size:12px;color:var(--sub);margin-bottom:12px">残り栄養素に最適な料理を自動提案</div>
-          <div style="display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap">
+          <div style="display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap">
             <button class="chip preset-chip" onclick="suggestRecipes('balance')" style="cursor:pointer;border:none;font-family:'Noto Sans JP',sans-serif">バランス重視</button>
             <button class="chip preset-chip" onclick="suggestRecipes('lowcal')" style="cursor:pointer;border:none;font-family:'Noto Sans JP',sans-serif">低カロリー</button>
             <button class="chip preset-chip" onclick="suggestRecipes('highprot')" style="cursor:pointer;border:none;font-family:'Noto Sans JP',sans-serif">高たんぱく</button>
@@ -620,17 +440,35 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;font-size:15px;color:var(--
             <button class="chip preset-chip" onclick="suggestRecipes('lowsalt')" style="cursor:pointer;border:none;font-family:'Noto Sans JP',sans-serif">減塩</button>
             <button class="chip preset-chip" onclick="suggestRecipes('snack')" style="cursor:pointer;border:none;font-family:'Noto Sans JP',sans-serif">間食</button>
           </div>
+          <button class="recipe-btn" onclick="aiSuggestRecipes()" style="background:var(--bl);color:#fff;margin-bottom:10px">🤖 AIに今日のおすすめを聞く</button>
           <div id="recipeResults"></div>
         </div>
         <div class="recipe-card">
           <h3>🥬 食材から検索</h3>
           <div style="font-size:12px;color:var(--sub);margin-bottom:12px">手元の食材を入力すると使えるレシピを表示</div>
           <div class="ing-row">
-            <input type="text" id="ingInput" placeholder="食材名（例：鶏肉、豆腐）" onkeydown="if(event.key==='Enter')addIng()">
+            <input type="text" id="ingInput" placeholder="食材名（例：鶏肉、豆腐）" oninput="showIngSuggestions(this.value)" onkeydown="if(event.key==='Enter'){addIng();hideIngSuggestions();}">
             <button class="ing-add-btn" onclick="addIng()">＋</button>
           </div>
           <div class="ing-tags" id="ingTags"></div>
-          <button class="recipe-btn recipe-btn-p" onclick="searchByIngredients()" style="margin-top:4px">食材でレシピ検索</button>
+          <button class="recipe-btn recipe-btn-p" onclick="searchByIngredients()" style="margin-top:4px">📋 DBからレシピ検索</button>
+          <button class="recipe-btn" onclick="aiIngredientSearch()" style="margin-top:6px;background:var(--bl);color:#fff">🤖 AIでレシピ提案</button>
+        </div>
+        <div class="recipe-card">
+          <h3>💬 AIに今日のレシピを相談する</h3>
+          <div style="font-size:12px;color:var(--sub);margin-bottom:10px">今日の栄養状態を自動で渡して昼食・夕食のレシピを提案します</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px">
+            <button onclick="aiChatPresetWithIngredients('今日の残り栄養素に合う昼食のレシピを詳しく教えてください')" style="padding:6px 10px;border:1.5px solid var(--bdr);border-radius:20px;background:var(--bg);font-size:11px;font-weight:600;cursor:pointer;font-family:'Noto Sans JP',sans-serif;color:var(--tx)">🥗 昼食レシピ</button>
+            <button onclick="aiChatPresetWithIngredients('今日の残り栄養素に合う夕食のレシピを詳しく教えてください')" style="padding:6px 10px;border:1.5px solid var(--bdr);border-radius:20px;background:var(--bg);font-size:11px;font-weight:600;cursor:pointer;font-family:'Noto Sans JP',sans-serif;color:var(--tx)">🍱 夕食レシピ</button>
+            <button onclick="aiChatPreset('たんぱく質を効率よく補える料理を教えてください')" style="padding:6px 10px;border:1.5px solid var(--bdr);border-radius:20px;background:var(--bg);font-size:11px;font-weight:600;cursor:pointer;font-family:'Noto Sans JP',sans-serif;color:var(--tx)">💪 たんぱく質</button>
+            <button onclick="aiChatPreset('今日の食事バランスを評価してアドバイスしてください')" style="padding:6px 10px;border:1.5px solid var(--bdr);border-radius:20px;background:var(--bg);font-size:11px;font-weight:600;cursor:pointer;font-family:'Noto Sans JP',sans-serif;color:var(--tx)">📊 バランス評価</button>
+            <button onclick="clearAiChat()" style="padding:6px 10px;border:1.5px solid var(--bdr);border-radius:20px;background:var(--bg);font-size:11px;color:var(--sub);cursor:pointer;font-family:'Noto Sans JP',sans-serif">🗑 クリア</button>
+          </div>
+          <div class="chat-history" id="ai-chat-history" style="min-height:80px"></div>
+          <div class="chat-input-row">
+            <input type="text" id="ai-chat-input" placeholder="例: 夕食に鶏肉を使ったレシピは？" onkeydown="if(event.key==='Enter')aiChat()">
+            <button class="chat-send-btn" onclick="aiChat()">↑</button>
+          </div>
         </div>
         <div class="recipe-card">
           <h3>📊 栄養状態の分析</h3>
@@ -669,6 +507,21 @@ body{font-family:'Noto Sans JP','DM Sans',sans-serif;font-size:15px;color:var(--
     <!-- SETTINGS -->
     <div id="sec-settings" class="sec">
       <div class="settings-section">
+        <div class="setting-group">
+          <div class="setting-hd">🤖 ローカルAI（Ollama）</div>
+          <div class="setting-row col">
+            <div style="width:100%"><div class="setting-lbl">OllamaサーバーURL</div><div class="setting-sub">例: http://192.168.11.50:11434</div></div>
+            <input class="setting-text-input" id="cfg-ollama-url" type="url" placeholder="http://192.168.11.50:11434" onchange="saveOllamaCfg()">
+          </div>
+          <div class="setting-row col">
+            <div style="width:100%"><div class="setting-lbl">モデル名</div><div class="setting-sub">例: llama3.2:3b / qwen2.5:3b</div></div>
+            <input class="setting-text-input" id="cfg-ollama-model" type="text" placeholder="llama3.2:3b" onchange="saveOllamaCfg()">
+          </div>
+          <div class="setting-row" style="justify-content:space-between;align-items:center">
+            <div id="ollama-status" style="font-size:12px;color:var(--sub)">未接続</div>
+            <button class="test-btn" onclick="testOllama()">接続テスト</button>
+          </div>
+        </div>
         <div class="setting-group">
           <div class="setting-hd">📡 サーバー連携（同期）</div>
           <div class="setting-row col">
@@ -1432,6 +1285,54 @@ async function renderWeeklyAnalysis(){
     </div>`).join('');
 }
 
+
+// ── 食材記憶システム ──────────────────────────
+const ING_KEY='cf_knownIngredients';
+function loadKnownIngredients(){
+  try{return JSON.parse(localStorage.getItem(ING_KEY)||'[]');}catch(e){return [];}
+}
+function saveIngredientsFromRecipe(text){
+  const known=new Set(loadKnownIngredients());
+  const lines=text.split('\n');
+  let inMaterial=false;
+  for(const line of lines){
+    const l=line.trim();
+    if(l.match(/^材料[:：]/)){inMaterial=true;continue;}
+    if(inMaterial){
+      if(l.match(/^(料理名|カロリー|たんぱく質|炭水化物|脂質|塩分|作り方)[:：]/)){inMaterial=false;continue;}
+      if(l.startsWith('---')){inMaterial=false;continue;}
+      const m=l.replace(/^[-・]\s*/,'').match(/^([\u3040-\u30FF\u4E00-\u9FFF\w]+)/);
+      if(m&&m[1]&&m[1].length>=2&&m[1].length<=12){known.add(m[1].trim());}
+    }
+  }
+  localStorage.setItem(ING_KEY,JSON.stringify([...known].slice(-200)));
+}
+function getIngredientSuggestions(input){
+  if(!input||input.length<1)return[];
+  return loadKnownIngredients().filter(s=>s.includes(input)).slice(0,6);
+}
+function showIngSuggestions(val){
+  let box=document.getElementById('ing-suggest-box');
+  const sugs=getIngredientSuggestions(val);
+  if(!sugs.length){if(box)box.remove();return;}
+  if(!box){
+    box=document.createElement('div');
+    box.id='ing-suggest-box';
+    box.style.cssText='position:absolute;z-index:100;background:var(--card);border:1px solid var(--bdr);border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.1);overflow:hidden;max-width:260px;';
+    const inp=document.getElementById('ingInput');
+    if(inp&&inp.parentNode){inp.parentNode.style.position='relative';inp.parentNode.appendChild(box);}
+  }
+  box.innerHTML=sugs.map(s=>`<div onclick="selectIngSuggestion('${s}')" style="padding:10px 14px;font-size:13px;cursor:pointer;border-bottom:1px solid var(--bdr2)">${s}</div>`).join('');
+}
+function hideIngSuggestions(){
+  const box=document.getElementById('ing-suggest-box');
+  if(box)box.remove();
+}
+function selectIngSuggestion(val){
+  const inp=document.getElementById('ingInput');
+  if(inp){inp.value=val;addIng();hideIngSuggestions();}
+}
+
 function addIng(){
   const v=document.getElementById('ingInput').value.trim();if(!v)return;
   if(!ingredients.includes(v)){ingredients.push(v);renderIngTags()}
@@ -1525,6 +1426,456 @@ function saveServerCfg(){
   serverCfg.url=document.getElementById('cfg-server').value.trim().replace(/\/$/,'');
   serverCfg.userId=document.getElementById('cfg-userid').value.trim();
   saveLocal(SK.serverCfg,serverCfg);updateSyncBadge();toast('サーバー設定を保存しました');
+}
+
+// ============ OLLAMA AI ============
+const SK_OLLAMA='cf_ollama';
+let ollamaCfg=Object.assign({url:'',model:'llama3.2:3b'},JSON.parse(localStorage.getItem(SK_OLLAMA)||'{}'));
+
+function saveOllamaCfg(){
+  ollamaCfg.url=document.getElementById('cfg-ollama-url').value.trim().replace(/\/$/,'');
+  ollamaCfg.model=document.getElementById('cfg-ollama-model').value.trim()||'llama3.2:3b';
+  localStorage.setItem(SK_OLLAMA,JSON.stringify(ollamaCfg));
+  toast('AI設定を保存しました');
+}
+
+function syncOllamaInputs(){
+  const u=document.getElementById('cfg-ollama-url');
+  const m=document.getElementById('cfg-ollama-model');
+  if(u)u.value=ollamaCfg.url||'';
+  if(m)m.value=ollamaCfg.model||'llama3.2:3b';
+}
+
+async function testOllama(){
+  const el=document.getElementById('ollama-status');
+  if(!ollamaCfg.url){toast('OllamaのURLを入力してください');return;}
+  if(el)el.innerHTML='<span style="color:var(--or)">接続中...</span>';
+  try{
+    const r=await fetch(ollamaCfg.url,{signal:AbortSignal.timeout(5000)});
+    const txt=await r.text();
+    if(txt.includes('Ollama')){
+      if(el)el.innerHTML='<span style="color:var(--g)">✅ 接続成功</span>';
+      toast('✅ Ollama接続OK');
+    }else{
+      if(el)el.innerHTML='<span style="color:var(--or)">⚠️ 応答あり（Ollamaか不明）</span>';
+    }
+  }catch(e){
+    if(el)el.innerHTML='<span style="color:var(--rd)">❌ 接続失敗</span>';
+    toast('❌ 接続失敗: '+e.message.slice(0,30));
+  }
+}
+
+async function ollamaGenerate(prompt,onChunk){
+  if(!ollamaCfg.url){toast('設定 → OllamaのURLを入力してください');throw new Error('no url');}
+  const url=ollamaCfg.url+'/api/generate';
+  const body=JSON.stringify({model:ollamaCfg.model||'llama3.2:3b',prompt,stream:true});
+  // text/plainでCORSのpreflightを回避（Ollamaは受け付ける）
+  const res=await fetch(url,{
+    method:'POST',
+    headers:{'Content-Type':'text/plain'},
+    body
+  });
+  if(!res.ok)throw new Error('HTTP '+res.status);
+  // 常にストリーミングで受信（安定・長文対応）
+  const reader=res.body.getReader();
+  const dec=new TextDecoder();
+  let full='';
+  while(true){
+    const{done,value}=await reader.read();
+    if(done)break;
+    const lines=dec.decode(value).split('\n').filter(Boolean);
+    for(const line of lines){
+      try{
+        const j=JSON.parse(line);
+        if(j.response){
+          full+=j.response;
+          if(onChunk)onChunk(full);
+        }
+        if(j.done)return full;
+      }catch(e){}
+    }
+  }
+  return full;
+}
+
+// ① 料理名 → 栄養素推定
+async function aiFoodLookup(){
+  const input=document.getElementById('ai-food-input');
+  const result=document.getElementById('ai-food-result');
+  const val=input.value.trim();
+  if(!val){toast('料理名を入力してください');return;}
+  result.innerHTML='<div class="chat-loading"><span class="chat-spinner"></span>AIが推定中...</div>';
+  const prompt=`栄養士として日本語で答えてください。
+食品:${val}
+日本の標準1食分の栄養素を以下の形式のみで答えてください:
+カロリー:[数値]
+たんぱく質:[数値]
+炭水化物:[数値]
+脂質:[数値]
+塩分:[数値]
+補足:[10文字以内]`;
+  try{
+    const text=await ollamaGenerate(prompt,null);
+    const lines=text.split('\n');
+    const get=(key)=>{const l=lines.find(l=>l.includes(key));return l?parseFloat(l.replace(/[^0-9.]/g,''))||0:0;};
+    const supLine=lines.find(l=>l.includes('補足'));
+    const sup=supLine?supLine.replace(/補足[:：\s]*/,''):'';
+    const kcal=get('カロリー');
+    const prot=get('たんぱく質');
+    const carb=get('炭水化物');
+    const fat=get('脂質');
+    const salt=get('塩分');
+    result.innerHTML=`
+      <div style="background:var(--bg);border-radius:12px;padding:12px;font-size:13px">
+        <div style="font-weight:700;margin-bottom:8px;font-size:14px">📊 ${val}</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px">
+          <div style="background:#fff;border-radius:8px;padding:8px;text-align:center">
+            <div style="font-size:17px;font-weight:700;color:var(--g);font-family:'DM Sans',sans-serif">${kcal}</div>
+            <div style="font-size:10px;color:var(--sub)">kcal</div>
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:8px;text-align:center">
+            <div style="font-size:17px;font-weight:700;color:var(--bl);font-family:'DM Sans',sans-serif">${prot}g</div>
+            <div style="font-size:10px;color:var(--sub)">たんぱく質</div>
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:8px;text-align:center">
+            <div style="font-size:17px;font-weight:700;color:var(--or);font-family:'DM Sans',sans-serif">${carb}g</div>
+            <div style="font-size:10px;color:var(--sub)">炭水化物</div>
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:8px;text-align:center">
+            <div style="font-size:17px;font-weight:700;color:var(--pu);font-family:'DM Sans',sans-serif">${fat}g</div>
+            <div style="font-size:10px;color:var(--sub)">脂質</div>
+          </div>
+          <div style="background:#fff;border-radius:8px;padding:8px;text-align:center">
+            <div style="font-size:17px;font-weight:700;color:var(--sub);font-family:'DM Sans',sans-serif">${salt}g</div>
+            <div style="font-size:10px;color:var(--sub)">塩分</div>
+          </div>
+        </div>
+        ${sup?`<div style="font-size:11px;color:var(--sub);line-height:1.5">💡 ${sup}</div>`:''}
+        <button onclick="applyAiFoodToForm('${val.replace(/'/g,"\\'")}',${kcal},${prot},${carb},${fat},${salt})"
+          style="width:100%;margin-top:10px;padding:10px;background:var(--bl);border:none;border-radius:10px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans JP',sans-serif">
+          ✏️ この値で入力フォームに反映する
+        </button>
+      </div>`;
+  }catch(e){
+    result.innerHTML=`<div style="color:var(--rd);font-size:12px;padding:8px">❌ ${e.message==='no url'?'設定からOllamaのURLを入力してください':e.message}</div>`;
+  }
+}
+
+function applyAiFoodToForm(name,kcal,prot,carb,fat,salt){
+  document.getElementById('f-name').value=name;
+  document.getElementById('f-kcal').value=kcal;
+  document.getElementById('f-prot').value=prot;
+  document.getElementById('f-carb').value=carb;
+  document.getElementById('f-fat').value=fat;
+  document.getElementById('f-salt').value=salt;
+  sw('input');
+  setTimeout(()=>document.getElementById('manual-input-form').scrollIntoView({behavior:'smooth'}),100);
+  toast('入力フォームに反映しました');
+}
+
+// ② 残り栄養素 → AIレシピ提案
+async function aiSuggestRecipes(){
+  const el=document.getElementById('recipeResults');
+  const t=getTotals();
+  const remKcal=Math.max(0,Math.round(cfg.kcal-t.kcal));
+  const remProt=Math.max(0,Math.round(cfg.prot-t.prot));
+  const remCarb=Math.max(0,Math.round(cfg.carb-t.carb));
+  const remFat=Math.max(0,Math.round(cfg.fat-t.fat));
+  el.innerHTML='<div class="chat-loading"><span class="chat-spinner"></span>AIが提案中... (30秒ほどかかる場合あり)</div>';
+  const prompt=`栄養士として日本語で答えてください。
+残りカロリー:${remKcal}kcal 炭水化物:${remCarb}g たんぱく質:${remProt}g 脂質:${remFat}g
+この残り栄養素に合う日本料理3品を提案してください。各料理を以下の形式で、---で区切って答えてください:
+料理名:[名前]
+カロリー:[数値]
+たんぱく質:[数値]
+炭水化物:[数値]
+脂質:[数値]
+理由:[20文字以内]
+---`;
+  try{
+    const text=await ollamaGenerate(prompt,null);
+    const blocks=text.split('---').map(b=>b.trim()).filter(Boolean);
+    if(!blocks.length){el.innerHTML='<div style="color:var(--sub);font-size:13px;padding:12px">AIからの応答を解析できませんでした</div>';return;}
+    el.innerHTML=blocks.map(block=>{
+      const lines=block.split('\n');
+      const get=(key)=>{const l=lines.find(l=>l.includes(key));return l?l.replace(/.*[:：]/,'').trim():''};
+      const name=get('料理名');
+      const kcal=parseFloat(get('カロリー'))||0;
+      const prot=parseFloat(get('たんぱく質'))||0;
+      const carb=parseFloat(get('炭水化物'))||0;
+      const fat=parseFloat(get('脂質'))||0;
+      const reason=get('理由');
+      if(!name)return'';
+      return`<div style="background:var(--bg);border-radius:14px;padding:14px;margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
+          <div style="font-size:15px;font-weight:700">${name}</div>
+          <span style="font-size:11px;background:#E5F2FF;color:var(--bl);padding:3px 8px;border-radius:8px;font-weight:700;flex-shrink:0">🤖 AI提案</span>
+        </div>
+        <div style="display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap">
+          <span style="font-size:13px;font-weight:700;color:var(--g);font-family:'DM Sans',sans-serif">${kcal}kcal</span>
+          <span style="font-size:11px;color:var(--sub)">炭${carb}g・た${prot}g・脂${fat}g</span>
+        </div>
+        ${reason?`<div style="font-size:12px;color:var(--sub);line-height:1.5">💡 ${reason}</div>`:''}
+      </div>`;
+    }).join('');
+  }catch(e){
+    el.innerHTML=`<div style="color:var(--rd);font-size:12px;padding:8px">❌ ${e.message==='no url'?'設定からOllamaのURLを入力してください':e.message}</div>`;
+  }
+}
+
+// ③ 食材 → AIレシピ提案
+async function aiIngredientSearch(){
+  if(!ingredients.length){toast('食材を入力してください');return;}
+  const el=document.getElementById('recipeResults');
+  el.innerHTML='<div class="chat-loading"><span class="chat-spinner"></span>AIが考え中...</div>';
+  const t=getTotals();
+  const remKcal=Math.max(0,Math.round(cfg.kcal-t.kcal));
+  const prompt=`栄養士として日本語で答えてください。
+食材:${ingredients.join('・')} 目安カロリー:${remKcal}kcal
+この食材を使った日本料理3品を提案し、各料理を---で区切って以下の形式で答えてください（最後のレシピも必ず---で終わること）:
+料理名:[名前]
+カロリー:[数値(kcal)]
+たんぱく質:[数値(g)]
+炭水化物:[数値(g)]
+脂質:[数値(g)]
+塩分:[数値(g)]
+材料:[食材と分量]
+作り方:[手順]
+---
+数値は必ず具体的な数字を入れてください。`;
+  try{
+    let resp='';
+    await ollamaGenerate(prompt,(chunk)=>{
+      resp=chunk;
+      el.innerHTML=`<div style="font-size:11px;color:var(--bl);font-weight:700;margin-bottom:8px">🤖 「${ingredients.join('・')}」を使ったAI提案</div><div style="font-size:12px;white-space:pre-wrap">${chunk}</div>`;
+    });
+    el.innerHTML=`<div style="font-size:11px;color:var(--bl);font-weight:700;margin-bottom:8px">🤖 「${ingredients.join('・')}」を使ったAI提案</div>`;
+    const msgEl=document.createElement('div');
+    el.appendChild(msgEl);
+    renderChatMsg(msgEl,resp);
+    saveIngredientsFromRecipe(resp);
+  }catch(e){
+    el.innerHTML=`<div style="color:var(--rd);font-size:12px;padding:8px">❌ ${e.message==='no url'?'設定からOllamaのURLを入力してください':e.message}</div>`;
+  }
+}
+
+// ④ AIチャット（栄養状態から昼食・夕食レシピ詳細提案）
+let aiChatHistory=[];
+
+function buildNutritionContext(){
+  const t=getTotals();
+  const remKcal=Math.max(0,Math.round(cfg.kcal-t.kcal));
+  const remProt=Math.max(0,Math.round(cfg.prot-t.prot));
+  const remCarb=Math.max(0,Math.round(cfg.carb-t.carb));
+  const remFat=Math.max(0,Math.round(cfg.fat-t.fat));
+  return {t,remKcal,remProt,remCarb,remFat};
+}
+
+function renderChatMsg(el,text){
+  const lines=text.split('\n');
+  let html='';
+  let buf=[];
+  let inRecipe=false;
+  let recipeHtml='';
+
+  const flushRecipe=()=>{
+    if(!buf.length)return;
+    // 単一行キー取得（表記ゆれ対応）
+    const get=(...keys)=>{
+      for(const key of keys){
+        const l=buf.find(l=>l.match(new RegExp('^[\\s]*'+key+'\\s*[:：]','i')));
+        if(l)return l.replace(/^[^:：]+[:：]/,'').trim();
+      }
+      return '';
+    };
+    // 複数行にまたがるセクションを取得（作り方・材料向け）
+    const getMultiLine=(...keys)=>{
+      let startIdx=-1;
+      for(const key of keys){
+        startIdx=buf.findIndex(l=>l.match(new RegExp('^[\\s]*'+key+'\\s*[:：]','i')));
+        if(startIdx>=0)break;
+      }
+      if(startIdx<0)return '';
+      // 開始行の値
+      const firstVal=buf[startIdx].replace(/^[^:：]+[:：]/,'').trim();
+      // 次のキー行が来るまで続く行を収集
+      const nextKeyIdx=buf.findIndex((l,i)=>i>startIdx&&l.match(/^[^\s].+[:：]/));
+      const endIdx=nextKeyIdx>0?nextKeyIdx:buf.length;
+      const extraLines=buf.slice(startIdx+1,endIdx).map(l=>l.trim()).filter(Boolean);
+      return [firstVal,...extraLines].filter(Boolean).join('\n');
+    };
+    const name=get('料理名','名前','レシピ名');
+    if(name){
+      const kcal=parseFloat(get('カロリー','エネルギー','熱量','kcal','cal'))||0;
+      const prot=parseFloat(get('たんぱく質','タンパク質','蛋白質','protein','たんぱく'))||0;
+      const carb=parseFloat(get('炭水化物','糖質','carb','炭水化'))||0;
+      const fat=parseFloat(get('脂質','脂肪','fat'))||0;
+      const salt=parseFloat(get('塩分','食塩','ナトリウム','塩','salt'))||0;
+      const ing=getMultiLine('材料');
+      const how=getMultiLine('作り方','手順','調理方法');
+      const data=JSON.stringify({name,kcal,prot,carb,fat,salt});
+      const safeData=data.replace(/'/g,"\\'").replace(/"/g,'&quot;');
+      recipeHtml+=`
+        <div style="background:white;border:1px solid var(--bdr);border-radius:12px;padding:12px;margin:6px 0">
+          <div style="font-weight:700;font-size:14px;margin-bottom:8px">🍽 ${name}</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:8px">
+            <div style="background:var(--bg);border-radius:8px;padding:6px;text-align:center">
+              <div style="font-size:15px;font-weight:700;color:var(--g)">${kcal}</div>
+              <div style="font-size:10px;color:var(--sub)">kcal</div>
+            </div>
+            <div style="background:var(--bg);border-radius:8px;padding:6px;text-align:center">
+              <div style="font-size:15px;font-weight:700;color:var(--bl)">${prot}g</div>
+              <div style="font-size:10px;color:var(--sub)">たんぱく質</div>
+            </div>
+            <div style="background:var(--bg);border-radius:8px;padding:6px;text-align:center">
+              <div style="font-size:15px;font-weight:700;color:var(--or)">${carb}g</div>
+              <div style="font-size:10px;color:var(--sub)">炭水化物</div>
+            </div>
+            <div style="background:var(--bg);border-radius:8px;padding:6px;text-align:center">
+              <div style="font-size:15px;font-weight:700;color:var(--pu)">${fat}g</div>
+              <div style="font-size:10px;color:var(--sub)">脂質</div>
+            </div>
+            ${salt>0?`<div style="background:var(--bg);border-radius:8px;padding:6px;text-align:center">
+              <div style="font-size:15px;font-weight:700;color:var(--sub)">${salt}g</div>
+              <div style="font-size:10px;color:var(--sub)">塩分</div>
+            </div>`:''}
+          </div>
+          ${ing?`<div style="font-size:12px;color:var(--sub);margin-bottom:6px"><b>材料:</b> ${ing}</div>`:''}
+          ${how?`<div style="font-size:12px;background:var(--bg);border-radius:8px;padding:8px;margin-bottom:8px;line-height:1.8"><b>作り方:</b><br>${how.replace(/\n/g,'<br>')}</div>`:''}
+          <button onclick="applyChatRecipe(this.dataset.recipe)" data-recipe="${safeData}"
+            style="width:100%;padding:9px;background:var(--bl);border:none;border-radius:8px;color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">
+            ✏️ 入力フォームに反映する
+          </button>
+        </div>`;
+    }
+    buf=[];inRecipe=false;
+  };
+
+  for(const line of lines){
+    const l=line.trim();
+    if(!l){if(!inRecipe)html+='<br>';continue;}
+    if(l.match(/^---+$/)){flushRecipe();if(!inRecipe)html+='<hr style="border:none;border-top:1px solid var(--bdr);margin:8px 0">';continue;}
+    if(l.startsWith('料理名:')||l.startsWith('料理名：')){if(buf.length)flushRecipe();inRecipe=true;buf=[l];continue;}
+    if(inRecipe){buf.push(l);continue;}
+    if(l.startsWith('###')||l.startsWith('##')){
+      html+=`<div style="font-weight:700;font-size:14px;margin:10px 0 4px;color:var(--bl)">${l.replace(/#+\s*/,'')}</div>`;
+    } else if(l.match(/^[①-⑩]|^\d+\./)){
+      html+=`<div style="font-size:12px;margin:3px 0;padding-left:4px">${l}</div>`;
+    } else {
+      html+=`<div style="font-size:13px;line-height:1.6;margin:2px 0">${l}</div>`;
+    }
+  }
+  // ループ終了後：未フラッシュのレシピブロックを確実に処理
+  if(buf.length>0)flushRecipe();
+  else flushRecipe();
+  el.innerHTML=(html+recipeHtml)||text;
+}
+
+function applyChatRecipe(jsonStr){
+  try{
+    const d=JSON.parse(jsonStr);
+    setIfExists('f-name',d.name||'');
+    setIfExists('f-kcal',d.kcal||'');
+    setIfExists('f-prot',d.prot||'');
+    setIfExists('f-carb',d.carb||'');
+    setIfExists('f-fat', d.fat||'');
+    setIfExists('f-salt',d.salt||'');
+    sw('input');
+    setTimeout(()=>{
+      const form=document.getElementById('manual-input-form');
+      if(form)form.scrollIntoView({behavior:'smooth',block:'start'});
+    },100);
+    toast('✅ 入力フォームに反映しました');
+  }catch(e){toast('❌ 反映失敗');}
+}
+
+function aiChatPreset(msg){
+  const input=document.getElementById('ai-chat-input');
+  if(input){input.value=msg;aiChat();}
+}
+function aiChatPresetWithIngredients(msg){
+  const input=document.getElementById('ai-chat-input');
+  if(!input)return;
+  const ingList=ingredients.length?`
+手元の食材：${ingredients.join('・')}（使える場合は優先して使ってください）`:'';
+  input.value=msg+ingList;
+  aiChat();
+}
+
+function clearAiChat(){
+  aiChatHistory=[];
+  const h=document.getElementById('ai-chat-history');
+  if(h)h.innerHTML='';
+}
+
+async function aiChat(){
+  const input=document.getElementById('ai-chat-input');
+  const history=document.getElementById('ai-chat-history');
+  const msg=input.value.trim();
+  if(!msg)return;
+  input.value='';
+
+  aiChatHistory.push({role:'user',content:msg});
+  history.innerHTML+=`<div class="chat-msg chat-user">${escapeHtml(msg)}</div>`;
+  history.scrollTop=history.scrollHeight;
+
+  const loadId='ai-load-'+Date.now();
+  history.innerHTML+=`<div class="chat-msg chat-ai" id="${loadId}" style="min-height:32px"><span class="chat-spinner" style="display:inline-block;width:16px;height:16px;border:2px solid var(--bdr);border-top-color:var(--bl);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle"></span> 考え中...</div>`;
+  history.scrollTop=history.scrollHeight;
+
+  const {t,remKcal,remProt,remCarb,remFat}=buildNutritionContext();
+  const histStr=aiChatHistory.slice(-4).map(h=>`${h.role==='user'?'Q':'A'}:${h.content}`).join('\n');
+
+  const prompt=`あなたは日本人向け管理栄養士AIです。日本語のみで答えてください。
+【今日の栄養状態】
+摂取済:${Math.round(t.kcal)}kcal(目標${cfg.kcal}) 炭${Math.round(t.carb)}g たん${Math.round(t.prot)}g 脂${Math.round(t.fat)}g
+残り:${remKcal}kcal 炭${remCarb}g たん${remProt}g 脂${remFat}g
+【会話】${histStr}
+【質問】${msg}
+レシピを答える場合は必ず以下の形式で、各レシピを---で区切って答えてください（最後のレシピも必ず---で終わること）:
+料理名:[名前]
+カロリー:[数値(kcal)]
+たんぱく質:[数値(g)]
+炭水化物:[数値(g)]
+脂質:[数値(g)]
+塩分:[数値(g)]
+材料:[食材と分量]
+作り方:[手順]
+---
+数値は必ず具体的な数字を入れてください。`;
+
+  try{
+    const loadEl=document.getElementById(loadId);
+    let resp='';
+    await ollamaGenerate(prompt,(chunk)=>{
+      resp=chunk;
+      // ストリーミング中はプレーンテキストのみ表示（カードは描画しない）
+      if(loadEl){
+        const plain=chunk.replace(/料理名[:：][^\n]*/g,l=>'🍽 '+l.replace(/料理名[:：]/,'').trim())
+          .replace(/カロリー[:：]/g,'kcal: ').replace(/たんぱく質[:：]/g,'P: ')
+          .replace(/炭水化物[:：]/g,'C: ').replace(/脂質[:：]/g,'F: ').replace(/塩分[:：]/g,'塩: ');
+        loadEl.style.whiteSpace='pre-wrap';
+        loadEl.style.fontSize='12px';
+        loadEl.textContent=plain;
+      }
+      history.scrollTop=history.scrollHeight;
+    });
+    // 完了後にフル描画（栄養素カード＋反映ボタン付き）
+    if(loadEl){
+      loadEl.style.whiteSpace='';
+      loadEl.style.fontSize='';
+      console.log('=== AI応答生テキスト ===');
+      console.log(resp);
+      console.log('=== ここまで ===');
+      renderChatMsg(loadEl,resp);
+    }
+    aiChatHistory.push({role:'assistant',content:resp});
+    saveIngredientsFromRecipe(resp);
+  }catch(e){
+    const loadEl=document.getElementById(loadId);
+    if(loadEl){loadEl.innerHTML=`<span style="color:var(--rd)">❌ ${e.message==='no url'?'設定からOllamaのURLを入力してください':escapeHtml(e.message)}</span>`;}
+  }
+  history.scrollTop=history.scrollHeight;
 }
 
 async function testServer(){
@@ -1660,177 +2011,6 @@ function toast(msg){
   setTimeout(()=>t.classList.remove('show'),2500);
 }
 
-// ══════════════════════════════════════════════
-//  バーコードスキャン & 食品検索
-// ══════════════════════════════════════════════
-
-// ZXing ライブラリを動的ロード（初回のみ）
-let _zxingLoaded = false;
-let _zxingReader = null;
-let _scanResultCache = null; // 反映用にキャッシュ
-
-function loadZXing(callback) {
-  if (_zxingLoaded) { callback(); return; }
-  const s = document.createElement('script');
-  s.src = 'https://unpkg.com/@zxing/library@0.19.1/umd/index.min.js';
-  s.onload = () => { _zxingLoaded = true; callback(); };
-  s.onerror = () => toast('⚠️ バーコードライブラリの読み込みに失敗しました');
-  document.head.appendChild(s);
-}
-
-function startBarcodeScanner() {
-  // HTTPS / localhost 以外ではカメラAPIが使えない
-  if (!window.isSecureContext) {
-    toast('⚠️ カメラはHTTPS環境でのみ使用できます。番号入力をご利用ください');
-    return;
-  }
-  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-    toast('⚠️ このブラウザはカメラ機能に対応していません');
-    return;
-  }
-  loadZXing(() => {
-    const wrap = document.getElementById('barcode-video-wrap');
-    wrap.style.display = 'block';
-    hideScanResult();
-
-    try {
-      _zxingReader = new ZXing.BrowserMultiFormatReader();
-      const p = _zxingReader.decodeFromVideoDevice(null, 'barcode-video', (result, err) => {
-        if (result) {
-          const code = result.getText();
-          stopBarcodeScanner();
-          onBarcodeDetected(code);
-        }
-        // err は読み取り中の一時エラーなので無視
-      });
-      if (p && typeof p.catch === 'function') {
-        p.catch(e => {
-          console.error('Camera error:', e);
-          toast('⚠️ カメラ起動失敗: ' + (e && (e.message || e.name) || 'unknown'));
-          wrap.style.display = 'none';
-        });
-      }
-    } catch(e) {
-      console.error('Scanner init error:', e);
-      toast('⚠️ カメラの起動に失敗しました');
-      wrap.style.display = 'none';
-    }
-  });
-}
-
-function stopBarcodeScanner() {
-  if (_zxingReader) {
-    try { _zxingReader.reset(); } catch(e) {}
-    _zxingReader = null;
-  }
-  document.getElementById('barcode-video-wrap').style.display = 'none';
-}
-
-// バーコード番号を手入力するダイアログ
-function openManualBarcode() {
-  const code = prompt('バーコード番号（JANコード）を入力してください');
-  if (code && code.trim()) onBarcodeDetected(code.trim());
-}
-
-// バーコード検出後の処理
-async function onBarcodeDetected(code) {
-  toast('📦 読み取り完了: ' + code);
-
-  // ① 内蔵食品マスターから検索
-  const hit = (savedFoods || []).find(f => f.jan === code)
-           || builtinFoods().find(f => f.jan === code);
-
-  if (hit) {
-    showScanResult(hit);
-    return;
-  }
-
-  // ② Open Food Facts API で JAN ルックアップ
-  toast('🔍 Open Food Facts で検索中…');
-  const food = await fetchOpenFoodFactsByBarcode(code);
-  if (food) {
-    showScanResult(food);
-    return;
-  }
-
-  // ③ 見つからない → 外部サイト誘導（フォールバック）
-  toast('🔍 データベースに登録がありません。外部サイトをご確認ください');
-  const inp = document.getElementById('food-name-search-input');
-  inp.value = code;
-  showWebSearchLinks(code);
-}
-
-// Open Food Facts: JANコードで商品検索
-async function fetchOpenFoodFactsByBarcode(code) {
-  try {
-    const r = await fetch(`https://world.openfoodfacts.org/api/v0/product/${encodeURIComponent(code)}.json`);
-    const data = await r.json();
-    if (data.status !== 1 || !data.product) return null;
-    return offProductToFood(data.product, code);
-  } catch(e) {
-    console.error('OFF barcode lookup error:', e);
-    return null;
-  }
-}
-
-// OFFの商品オブジェクトを当アプリのfood形式に変換
-function offProductToFood(p, jan) {
-  const n = p.nutriments || {};
-  // kcal/100g を優先的に取得（kJしかない場合は変換）
-  let kcal = n['energy-kcal_100g'];
-  if (kcal == null && n.energy_100g) kcal = n.energy_100g / 4.184;
-  if (kcal == null && n['energy-kj_100g']) kcal = n['energy-kj_100g'] / 4.184;
-  if (kcal == null) return null; // カロリー不明は除外
-  const name = p.product_name_ja || p.product_name || p.generic_name_ja || p.generic_name || ('商品 ' + (jan || ''));
-  return {
-    jan: jan || p.code || '',
-    name: name.trim(),
-    brand: (p.brands || '').split(',')[0].trim(),
-    kcal: Math.round(kcal),
-    carb: +Number(n.carbohydrates_100g || 0).toFixed(1),
-    prot: +Number(n.proteins_100g || 0).toFixed(1),
-    fat:  +Number(n.fat_100g || 0).toFixed(1),
-    salt: +Number(n.salt_100g || 0).toFixed(2),
-    unit: '100g'
-  };
-}
-
-// スキャン結果を表示
-function showScanResult(food) {
-  _scanResultCache = food;
-  const nameTxt = food.brand ? `${food.name}（${food.brand}）` : food.name;
-  document.getElementById('scan-result-name').textContent = nameTxt;
-  document.getElementById('scan-result-kcal').textContent =
-    food.kcal + ' kcal / ' + (food.unit || '100g');
-  document.getElementById('scan-result-detail').textContent =
-    `炭水化物 ${food.carb??'-'}g  たんぱく質 ${food.prot??'-'}g  脂質 ${food.fat??'-'}g  塩分 ${food.salt??'-'}g`;
-  const box = document.getElementById('scan-result-box');
-  box.classList.add('show');
-}
-
-function hideScanResult() {
-  document.getElementById('scan-result-box').classList.remove('show');
-  _scanResultCache = null;
-}
-
-// 「入力フォームに反映」ボタン
-function applyScanResult() {
-  if (!_scanResultCache) return;
-  const f = _scanResultCache;
-  // 既存の手入力フォームの各フィールドに値をセット
-  setIfExists('f-name', f.name);
-  setIfExists('f-kcal', f.kcal);
-  setIfExists('f-unit', f.unit || '100g');
-  setIfExists('f-carb', f.carb ?? '');
-  setIfExists('f-prot', f.prot ?? '');
-  setIfExists('f-fat',  f.fat  ?? '');
-  setIfExists('f-salt', f.salt ?? '');
-  hideScanResult();
-  toast('✅ フォームに反映しました');
-  // 入力フォームまでスクロール
-  const form = document.getElementById('manual-input-form');
-  if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
 
 function setIfExists(id, val) {
   const el = document.getElementById(id);
@@ -2105,7 +2285,6 @@ function onFoodNameInput() {
 async function searchFoodByName() {
   const val = document.getElementById('food-name-search-input').value.trim();
   if (!val) { toast('食品名を入力してください'); return; }
-  // 外部リンクも更新（最終フォールバック）
   showWebSearchLinks(val);
 
   // ① 内蔵DBから検索
@@ -2115,9 +2294,76 @@ async function searchFoodByName() {
     return;
   }
 
-  // ② 内蔵DBにヒットなし → OFF APIへフォールバック
+  // ② 内蔵DBにヒットなし → Open Food Factsへ
   toast('🌐 内蔵DBに無いためOpen Food Factsで検索…');
-  await searchOpenFoodFacts(val);
+  const offHit = await searchOpenFoodFacts(val);
+
+  // ③ OFFもヒットなし → AIにフォールバック
+  if (!offHit) {
+    toast('🤖 DBにないためAIで推定します…');
+    await searchFoodByNameAI();
+  }
+}
+
+// AI専用検索（直接呼び出しも可）
+async function searchFoodByNameAI() {
+  const val = document.getElementById('food-name-search-input').value.trim();
+  if (!val) { toast('食品名を入力してください'); return; }
+
+  const loadingEl = document.getElementById('api-search-loading');
+  const resultsEl = document.getElementById('api-search-results');
+  const listEl = document.getElementById('api-results-list');
+
+  loadingEl.style.display = 'block';
+  listEl.innerHTML = '';
+  resultsEl.classList.remove('show');
+
+  const prompt = `栄養士として日本語で答えてください。
+食品:${val}
+日本の標準1食分の栄養素を以下の形式のみで答えてください:
+食品名:[正式名称]
+カロリー:[数値]
+たんぱく質:[数値]
+炭水化物:[数値]
+脂質:[数値]
+塩分:[数値]
+単位:[1個/1人前等]
+補足:[10文字以内]`;
+
+  try {
+    const text = await ollamaGenerate(prompt, null);
+    const lines = text.split('\n');
+    const get = (key) => { const l = lines.find(l => l.includes(key)); return l ? l.replace(/.*[:：]/,'').trim() : ''; };
+    const name  = get('食品名') || val;
+    const kcal  = parseFloat(get('カロリー')) || 0;
+    const prot  = parseFloat(get('たんぱく質')) || 0;
+    const carb  = parseFloat(get('炭水化物')) || 0;
+    const fat   = parseFloat(get('脂質')) || 0;
+    const salt  = parseFloat(get('塩分')) || 0;
+    const unit  = get('単位') || '1人前';
+    const note  = get('補足');
+
+    const aiFood = { name, kcal, prot, carb, fat, salt, unit, _aiEstimate: true };
+    _apiResultsCache = [aiFood];
+
+    listEl.innerHTML = `
+      <div style="font-size:11px;color:var(--bl);font-weight:700;margin-bottom:6px">🤖 AI推定値（目安）</div>
+      <div class="api-result-card" onclick="applyApiResult(0)" style="border:1.5px solid var(--bl)">
+        <div class="api-result-name">${escapeHtml(name)}</div>
+        <div class="api-result-brand" style="color:var(--bl)">AI推定 / ${escapeHtml(unit)}</div>
+        <div class="api-result-nutri">
+          <span class="api-result-kcal">${kcal} kcal</span>
+          ・炭${carb}g ・た${prot}g ・脂${fat}g ・塩${salt}g
+        </div>
+        ${note ? `<div style="font-size:11px;color:var(--sub);margin-top:4px">💡 ${escapeHtml(note)}</div>` : ''}
+      </div>`;
+    resultsEl.classList.add('show');
+  } catch(e) {
+    listEl.innerHTML = `<div class="api-no-result">🤖 AI推定失敗: ${e.message === 'no url' ? '設定からOllamaのURLを入力してください' : escapeHtml(e.message)}</div>`;
+    resultsEl.classList.add('show');
+  } finally {
+    loadingEl.style.display = 'none';
+  }
 }
 
 // 内蔵DBの結果を表示
@@ -2168,7 +2414,9 @@ async function searchOpenFoodFacts(query) {
     _apiResultsCache = products.slice(0, 10);
 
     if (!_apiResultsCache.length) {
-      listEl.innerHTML = '<div class="api-no-result">該当する栄養データが見つかりませんでした。<br>下の外部リンクから確認してください</div>';
+      listEl.innerHTML = '<div class="api-no-result">該当する栄養データが見つかりませんでした。<br>AIで推定します…</div>';
+      resultsEl.classList.add('show');
+      return false; // ヒットなし
     } else {
       listEl.innerHTML = _apiResultsCache.map((f, i) => `
         <div class="api-result-card" onclick="applyApiResult(${i})">
@@ -2180,28 +2428,35 @@ async function searchOpenFoodFacts(query) {
           </div>
         </div>
       `).join('');
+      resultsEl.classList.add('show');
+      return true; // ヒットあり
     }
-    resultsEl.classList.add('show');
   } catch(e) {
     console.error('[OFF] search error:', e);
     const detail = e && (e.message || e.name) || 'unknown';
-    listEl.innerHTML = '<div class="api-no-result">⚠️ 通信エラー: ' + escapeHtml(detail) + '<br><br>'
-      + 'CORS/ネットワーク問題の可能性があります。<br>'
-      + 'F12 → Console でエラー詳細を確認してください。<br>'
-      + '下の外部リンクもご利用いただけます</div>';
+    listEl.innerHTML = '<div class="api-no-result">⚠️ 通信エラー: ' + escapeHtml(detail) + '<br>AIで推定します…</div>';
     resultsEl.classList.add('show');
+    return false;
   } finally {
     loadingEl.style.display = 'none';
   }
+  return false;
 }
 
 // 検索結果カードクリック → スキャン結果として表示（その後フォームに反映可能）
 function applyApiResult(idx) {
   const f = _apiResultsCache[idx];
   if (!f) return;
-  showScanResult(f);
-  // 結果ボックスにスクロール
-  document.getElementById('scan-result-box').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  setIfExists('f-name', f.name || '');
+  setIfExists('f-kcal', f.kcal || '');
+  setIfExists('f-unit', f.unit || '100g');
+  setIfExists('f-carb', f.carb ?? '');
+  setIfExists('f-prot', f.prot ?? '');
+  setIfExists('f-fat',  f.fat  ?? '');
+  setIfExists('f-salt', f.salt ?? '');
+  toast('✅ フォームに反映しました');
+  const form = document.getElementById('manual-input-form');
+  if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function escapeHtml(s) {
@@ -2227,7 +2482,7 @@ function showWebSearchLinks(query) {
 }
 
 // ============ INIT ============
-syncCfgInputs();updateSyncBadge();updateDateLbl();
+syncCfgInputs();syncOllamaInputs();updateSyncBadge();updateDateLbl();
 loadCurrentDate();
 </script>
 </body>
